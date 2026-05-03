@@ -1,0 +1,43 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body { margin:0; padding:0; }
+  body { background: var(--paper-100); color: var(--ink-700); font-family: var(--font-body); padding: 28px; }
+  h1 { font-family: var(--font-display); font-weight: 700; font-size: 32px; letter-spacing: -0.04em; margin: 0 0 4px; }
+  .sub { font-family: var(--font-editorial); font-style: italic; font-size: 15px; color: var(--ink-500); margin-bottom: 22px; }
+
+  .lbl { font-family: var(--font-mono); font-size: 9px; font-weight:700; letter-spacing: 0.18em; color: var(--ink-500); margin-bottom: 8px; }
+  .row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1.5px solid var(--ink-700); margin-bottom: 18px; }
+  .row .cell { padding: 14px 12px; border-right: 1.5px solid var(--ink-700); }
+  .row .cell:last-child { border-right: 0; }
+  .nm { font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: -0.02em; }
+  .vl { font-family: var(--font-mono); font-size: 8px; font-weight:700; letter-spacing: 0.15em; margin-top: 4px; }
+
+  .text-demo { padding: 18px 20px; border: 1.5px solid var(--ink-700); background: var(--paper-50); }
+</style></head><body>
+<h1>Tone of voice, in ink.</h1>
+<div class="sub">Four densities of ultramarine for hierarchy. Plus three paper warmths.</div>
+
+<div class="lbl">INK &mdash; foreground</div>
+<div class="row">
+  <div class="cell" style="background:var(--ink-900); color: var(--paper-100);"><div class="nm">Ink 900</div><div class="vl">deep / pressed</div></div>
+  <div class="cell" style="background:var(--ink-700); color: var(--paper-100);"><div class="nm">Ink 700</div><div class="vl">core text</div></div>
+  <div class="cell" style="background:var(--ink-500); color: var(--paper-100);"><div class="nm">Ink 500</div><div class="vl">secondary</div></div>
+  <div class="cell" style="background:var(--ink-300); color: var(--ink-900);"><div class="nm">Ink 300</div><div class="vl">muted lines</div></div>
+</div>
+
+<div class="lbl">PAPER &mdash; surface</div>
+<div class="row" style="grid-template-columns: repeat(4, 1fr);">
+  <div class="cell" style="background:var(--paper-50);"><div class="nm">Paper 50</div><div class="vl" style="color:var(--ink-500);">hover / lift</div></div>
+  <div class="cell" style="background:var(--paper-100);"><div class="nm">Paper 100</div><div class="vl" style="color:var(--ink-500);">page</div></div>
+  <div class="cell" style="background:var(--paper-200);"><div class="nm">Paper 200</div><div class="vl" style="color:var(--ink-500);">wells</div></div>
+  <div class="cell" style="background:var(--paper-300);"><div class="nm">Paper 300</div><div class="vl" style="color:var(--ink-500);">hairlines</div></div>
+</div>
+
+<div class="text-demo">
+  <div style="color: var(--ink-700); font-family: var(--font-display); font-weight:700; font-size: 28px; letter-spacing:-0.04em;">Five minutes, with feeling.</div>
+  <div style="color: var(--ink-500); font-family: var(--font-editorial); font-style:italic; font-size: 16px; margin-top: 4px;">Today: the notes on string 5.</div>
+  <div style="color: var(--color-fg-muted); font-family: var(--font-body); font-size: 13px; margin-top: 8px;">Started fourteen sessions ago.</div>
+</div>
+</body></html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body { margin:0; padding:0; }
+  body { background: var(--paper-100); color: var(--ink-700); font-family: var(--font-body); padding: 28px; }
+  h1 { font-family: var(--font-display); font-weight: 700; font-size: 32px; letter-spacing: -0.04em; margin: 0 0 4px; }
+  .sub { font-family: var(--font-editorial); font-style: italic; font-size: 15px; color: var(--ink-500); margin-bottom: 22px; }
+
+  .stage { display: flex; gap: 18px; align-items: stretch; flex-wrap: wrap; }
+  .frame { padding: 22px; border: 1.5px solid var(--ink-700); display: grid; place-items: center; min-width: 130px; }
+  .cap { font-family: var(--font-mono); font-weight: 700; font-size: 9px; letter-spacing: 0.18em; color: var(--ink-500); margin-top: 8px; text-align: center; text-transform: uppercase; }
+  .col { display: flex; flex-direction: column; align-items: center; }
+</style></head><body>
+<h1>Logomark.</h1>
+<div class="sub">A score-fragment in a riso block. Goes on paper, on ink, on spot.</div>
+
+<div class="stage">
+  <div class="col">
+    <div class="frame" style="background: var(--paper-100);"><img src="../assets/logomark.svg" width="80" height="80" alt=""></div>
+    <div class="cap">on paper</div>
+  </div>
+  <div class="col">
+    <div class="frame" style="background: var(--paper-50);"><img src="../assets/logomark.svg" width="80" height="80" alt=""></div>
+    <div class="cap">on paper-50</div>
+  </div>
+  <div class="col">
+    <div class="frame" style="background: var(--ink-700);"><img src="../assets/logomark.svg" width="80" height="80" alt=""></div>
+    <div class="cap">on ink</div>
+  </div>
+  <div class="col">
+    <div class="frame" style="background: var(--spot-700);"><img src="../assets/logomark.svg" width="80" height="80" alt=""></div>
+    <div class="cap">on spot</div>
+  </div>
+</div>
+</body></html>

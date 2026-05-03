@@ -1,0 +1,37 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body { margin:0; padding:0; }
+  body { background: var(--paper-100); color: var(--ink-700); font-family: var(--font-body); padding: 28px; }
+  .grid { display:grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .sw { border: 1.5px solid var(--ink-700); background: var(--paper-50); }
+  .chip { aspect-ratio: 1.4; }
+  .meta { padding: 8px 10px; border-top: 1.5px solid var(--ink-700); }
+  .nm { font-family: var(--font-display); font-weight: 700; font-size: 14px; letter-spacing: -0.02em; }
+  .vl { font-family: var(--font-mono); font-size: 8px; font-weight:700; letter-spacing: 0.15em; color: var(--ink-500); margin-top: 4px; }
+  h1 { font-family: var(--font-display); font-weight: 700; font-size: 32px; letter-spacing: -0.04em; margin: 0 0 4px; }
+  .sub { font-family: var(--font-editorial); font-style: italic; font-size: 15px; color: var(--ink-500); margin-bottom: 18px; }
+</style></head><body>
+<h1>The fifth hue.</h1>
+<div class="sub">Printer's green, mixed in-system. Used only for "in tune". Plus the spot-as-error case &mdash; same press, no third color.</div>
+<div class="grid">
+  <div class="sw"><div class="chip" style="background:var(--green-500)"></div><div class="meta"><div class="nm">Green 500 · success</div><div class="vl">#1F7A4D</div></div></div>
+  <div class="sw"><div class="chip" style="background:var(--green-100)"></div><div class="meta"><div class="nm">Green 100 · soft</div><div class="vl">#D7E8DC</div></div></div>
+  <div class="sw"><div class="chip" style="background:var(--spot-700)"></div><div class="meta"><div class="nm">Spot 700 · error</div><div class="vl">#FF5A2C</div></div></div>
+  <div class="sw"><div class="chip" style="background:var(--red-100)"></div><div class="meta"><div class="nm">Red 100 · soft</div><div class="vl">#FFDFD2</div></div></div>
+</div>
+
+<div style="display:grid; grid-template-columns: 1fr 1fr; gap:14px; margin-top: 22px;">
+  <div style="border: 1.5px solid var(--ink-700); padding: 14px 16px; background: var(--green-100);">
+    <div style="font-family: var(--font-mono); font-size: 9px; font-weight:700; letter-spacing: 0.18em; color: var(--green-500);">CORRECT</div>
+    <div style="font-family: var(--font-display); font-weight:700; font-size: 24px; letter-spacing:-0.04em; color: var(--ink-700); margin-top:6px;">In tune.</div>
+    <div style="font-family: var(--font-editorial); font-style:italic; font-size: 14px; color: var(--ink-500); margin-top:2px;">F major, third fret.</div>
+  </div>
+  <div style="border: 1.5px solid var(--ink-700); padding: 14px 16px; background: var(--red-100);">
+    <div style="font-family: var(--font-mono); font-size: 9px; font-weight:700; letter-spacing: 0.18em; color: var(--spot-900);">NOT QUITE</div>
+    <div style="font-family: var(--font-display); font-weight:700; font-size: 24px; letter-spacing:-0.04em; color: var(--ink-700); margin-top:6px;">Try again.</div>
+    <div style="font-family: var(--font-editorial); font-style:italic; font-size: 14px; color: var(--ink-500); margin-top:2px;">A half-step flat.</div>
+  </div>
+</div>
+</body></html>

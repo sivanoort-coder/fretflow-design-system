@@ -1,0 +1,55 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body { margin:0; padding:0; }
+  body { background: var(--paper-100); color: var(--ink-700); font-family: var(--font-body); padding: 28px; }
+  h1 { font-family: var(--font-display); font-weight: 700; font-size: 32px; letter-spacing: -0.04em; margin: 0 0 4px; }
+  .sub { font-family: var(--font-editorial); font-style: italic; font-size: 15px; color: var(--ink-500); margin-bottom: 28px; }
+
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  .swatch { padding: 0 0 14px; }
+  .demo { background: var(--paper-50); border: 1.5px solid var(--ink-700); height: 80px;
+    display: grid; place-items: center;
+    font-family: var(--font-display); font-weight: 700; font-size: 18px; letter-spacing:-0.03em; color: var(--ink-700); }
+  .demo.press    { box-shadow: var(--shadow-press); }
+  .demo.press-lg { box-shadow: var(--shadow-press-lg); }
+  .demo.inset    { box-shadow: var(--shadow-inset); }
+  .demo.focus    { box-shadow: var(--shadow-focus); }
+  .nm { font-family: var(--font-display); font-weight: 700; font-size: 16px; letter-spacing: -0.02em; color: var(--ink-700); margin-top: 14px; }
+  .px { font-family: var(--font-mono); font-weight: 700; font-size: 9px; letter-spacing: 0.15em; color: var(--ink-500); margin-top: 4px; }
+  .desc { font-family: var(--font-editorial); font-style: italic; font-size: 13px; color: var(--ink-500); margin-top: 4px; }
+</style></head><body>
+<h1>Misregistration shadows.</h1>
+<div class="sub">Hard offset blocks &mdash; the print didn't quite line up. Never a soft drop.</div>
+
+<div class="grid">
+  <div class="swatch">
+    <div class="demo press">PRIMARY</div>
+    <div class="nm">shadow-press</div>
+    <div class="px">4&nbsp;4&nbsp;0 SPOT-700</div>
+    <div class="desc">Default press &mdash; on buttons and lifted cards.</div>
+  </div>
+
+  <div class="swatch">
+    <div class="demo press-lg">HERO</div>
+    <div class="nm">shadow-press-lg</div>
+    <div class="px">6&nbsp;6&nbsp;0 SPOT-700</div>
+    <div class="desc">For the one piece on a screen that says "go".</div>
+  </div>
+
+  <div class="swatch">
+    <div class="demo inset">PRESSED</div>
+    <div class="nm">shadow-inset</div>
+    <div class="px">INSET 0&nbsp;-3&nbsp;0 INK/18%</div>
+    <div class="desc">Active state &mdash; the button is being held down.</div>
+  </div>
+
+  <div class="swatch">
+    <div class="demo focus">FOCUS</div>
+    <div class="nm">shadow-focus</div>
+    <div class="px">0&nbsp;0&nbsp;0&nbsp;3 SPOT/45%</div>
+    <div class="desc">Keyboard focus halo &mdash; spot orange, low alpha.</div>
+  </div>
+</div>
+</body></html>

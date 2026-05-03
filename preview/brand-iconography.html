@@ -1,0 +1,44 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body { margin:0; padding:0; }
+  body { background: var(--paper-100); color: var(--ink-700); font-family: var(--font-body); padding: 28px; }
+  h1 { font-family: var(--font-display); font-weight: 700; font-size: 32px; letter-spacing: -0.04em; margin: 0 0 4px; }
+  .sub { font-family: var(--font-editorial); font-style: italic; font-size: 15px; color: var(--ink-500); margin-bottom: 22px; }
+  .lbl { font-family: var(--font-mono); font-size: 9px; font-weight:700; letter-spacing: 0.18em; color: var(--ink-500); margin: 0 0 10px; text-transform: uppercase; }
+
+  .grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 12px; padding: 14px 4px; align-items: center; justify-items: center; }
+  .item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .ic { width: 36px; height: 36px; display: grid; place-items: center; border: 1.5px solid var(--ink-700); background: var(--paper-50); color: var(--ink-700); }
+  .ic svg { width: 20px; height: 20px; }
+  .nm { font-family: var(--font-mono); font-size: 9px; font-weight: 700; letter-spacing: 0.10em; color: var(--ink-500); text-align: center; text-transform: uppercase; }
+  .glyph { font-family: var(--font-editorial); font-size: 22px; font-weight: 500; color: var(--ink-700); }
+</style></head><body>
+<h1>Iconography.</h1>
+<div class="sub">Single-weight ink line on a square plate. Custom musical glyphs in EB Garamond &mdash; never a stroked SVG.</div>
+
+<div class="lbl">UI &mdash; lucide line, ink fill</div>
+<div class="grid">
+  <div class="item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg></div><div class="nm">play</div></div>
+  <div class="item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg></div><div class="nm">pause</div></div>
+  <div class="item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/></svg></div><div class="nm">add</div></div>
+  <div class="item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><div class="nm">check</div></div>
+  <div class="item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></div><div class="nm">close</div></div>
+  <div class="item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div class="nm">timer</div></div>
+  <div class="item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-6h3z"/><path d="M3 19a2 2 0 0 0 2 2h1v-6H3z"/></svg></div><div class="nm">listen</div></div>
+  <div class="item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14v6a7 7 0 0 1-14 0z"/><path d="M12 17v4M8 21h8"/></svg></div><div class="nm">fork</div></div>
+</div>
+
+<div class="lbl">MUSICAL &mdash; garamond glyph, no stroke</div>
+<div class="grid">
+  <div class="item"><div class="ic"><span class="glyph">𝄞</span></div><div class="nm">clef</div></div>
+  <div class="item"><div class="ic"><span class="glyph">♯</span></div><div class="nm">sharp</div></div>
+  <div class="item"><div class="ic"><span class="glyph">♭</span></div><div class="nm">flat</div></div>
+  <div class="item"><div class="ic"><span class="glyph">♮</span></div><div class="nm">natural</div></div>
+  <div class="item"><div class="ic"><span class="glyph">♩</span></div><div class="nm">quarter</div></div>
+  <div class="item"><div class="ic"><span class="glyph">𝄐</span></div><div class="nm">fermata</div></div>
+  <div class="item"><div class="ic"><span class="glyph" style="font-style: italic;">f</span></div><div class="nm">forte</div></div>
+  <div class="item"><div class="ic"><span class="glyph" style="font-style: italic;">p</span></div><div class="nm">piano</div></div>
+</div>
+</body></html>

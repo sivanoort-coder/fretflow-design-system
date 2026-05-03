@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" width="800" height="240">
+  
+  
+  <g>
+    
+    <line x1="40" y1="63.4" x2="760" y2="63.4" stroke="#FF5A2C" stroke-width="1" opacity="0.85"></line>
+    <line x1="40" y1="93.4" x2="760" y2="93.4" stroke="#FF5A2C" stroke-width="1" opacity="0.85"></line>
+    <line x1="40" y1="123.4" x2="760" y2="123.4" stroke="#FF5A2C" stroke-width="1" opacity="0.85"></line>
+    <line x1="40" y1="153.4" x2="760" y2="153.4" stroke="#FF5A2C" stroke-width="1" opacity="0.85"></line>
+    <line x1="40" y1="183.4" x2="760" y2="183.4" stroke="#FF5A2C" stroke-width="1" opacity="0.85"></line>
+    
+    <line x1="40" y1="62" x2="760" y2="62" stroke="#152066" stroke-width="1.2"></line>
+    <line x1="40" y1="92" x2="760" y2="92" stroke="#152066" stroke-width="1.2"></line>
+    <line x1="40" y1="122" x2="760" y2="122" stroke="#152066" stroke-width="1.2"></line>
+    <line x1="40" y1="152" x2="760" y2="152" stroke="#152066" stroke-width="1.2"></line>
+    <line x1="40" y1="182" x2="760" y2="182" stroke="#152066" stroke-width="1.2"></line>
+  </g>
+
+  
+  <text x="50" y="160" font-family="&#39;EB Garamond&#39;, Georgia, serif" font-size="120" fill="#152066">𝄞</text>
+
+  
+  <line x1="200" y1="62" x2="200" y2="182" stroke="#152066" stroke-width="1.2"></line>
+  <line x1="380" y1="62" x2="380" y2="182" stroke="#152066" stroke-width="1.2"></line>
+  <line x1="560" y1="62" x2="560" y2="182" stroke="#152066" stroke-width="1.2"></line>
+  <line x1="755" y1="48" x2="755" y2="196" stroke="#152066" stroke-width="3"></line>
+  <line x1="760" y1="48" x2="760" y2="196" stroke="#152066" stroke-width="1.2"></line>
+
+  
+  <g>
+    <circle cx="155" cy="122" r="11" fill="#FF5A2C" stroke="#152066" stroke-width="1.5"></circle>
+    <text x="155" y="127" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#F4EEDF">C</text>
+
+    <circle cx="260" cy="92" r="10" fill="#F4EEDF" stroke="#152066" stroke-width="1.5"></circle>
+    <text x="260" y="96" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#152066">G</text>
+
+    <circle cx="335" cy="152" r="10" fill="#F4EEDF" stroke="#152066" stroke-width="1.5"></circle>
+    <text x="335" y="156" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#152066">A</text>
+
+    <circle cx="430" cy="62" r="10" fill="#F4EEDF" stroke="#152066" stroke-width="1.5"></circle>
+    <text x="430" y="66" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#152066">F</text>
+
+    <circle cx="500" cy="122" r="11" fill="#1F7A4D" stroke="#152066" stroke-width="1.5"></circle>
+    <text x="500" y="127" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#F4EEDF">C</text>
+
+    <circle cx="630" cy="182" r="10" fill="#F4EEDF" stroke="#152066" stroke-width="1.5"></circle>
+    <text x="630" y="186" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#152066">E</text>
+
+    <circle cx="700" cy="92" r="10" fill="#F4EEDF" stroke="#152066" stroke-width="1.5"></circle>
+    <text x="700" y="96" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#152066">G</text>
+  </g>
+
+  
+  <text x="50" y="225" font-family="&#39;EB Garamond&#39;, Georgia, serif" font-style="italic" font-size="14" fill="#152066">measure i — <tspan fill="#FF5A2C">andante, calmly.</tspan></text>
+</svg>

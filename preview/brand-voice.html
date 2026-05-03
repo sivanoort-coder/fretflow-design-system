@@ -1,0 +1,47 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body { margin:0; padding:0; }
+  body { background: var(--paper-100); color: var(--ink-700); font-family: var(--font-body); padding: 28px; }
+  h1 { font-family: var(--font-display); font-weight: 700; font-size: 32px; letter-spacing: -0.04em; margin: 0 0 4px; }
+  .sub { font-family: var(--font-editorial); font-style: italic; font-size: 15px; color: var(--ink-500); margin-bottom: 22px; }
+  .lbl { font-family: var(--font-mono); font-size: 9px; font-weight:700; letter-spacing: 0.18em; color: var(--ink-500); margin: 0 0 8px; text-transform: uppercase; }
+
+  .stack { display: grid; gap: 14px; }
+  .item { display: grid; grid-template-columns: 64px 1fr; gap: 14px; align-items: flex-start;
+    padding: 14px 16px; border: 1.5px solid var(--ink-700); }
+  .item.yes { background: var(--green-100); border-color: var(--green-500); }
+  .item.no  { background: var(--red-100);   border-color: var(--spot-700); }
+  .mark { font-family: var(--font-display); font-weight: 700; font-size: 18px; letter-spacing: -0.03em; align-self: center; }
+  .item.yes .mark { color: var(--green-500); }
+  .item.no  .mark { color: var(--spot-900); }
+  .copy { font-family: var(--font-body); font-size: 15px; line-height: 1.4; color: var(--ink-700); }
+  .copy em { font-family: var(--font-editorial); color: var(--ink-500); font-size: 13px; display: block; margin-top: 4px; }
+</style></head><body>
+<h1>Voice.</h1>
+<div class="sub">Editorial &mdash; like a music teacher who reads. Plain words, occasional italic aside, no exclamations.</div>
+
+<div class="stack">
+  <div class="item yes">
+    <div class="mark">DO</div>
+    <div class="copy">Nice &mdash; that's three perfect fourths in a row.<em>Acknowledges the specific thing they did.</em></div>
+  </div>
+  <div class="item no">
+    <div class="mark">NOT</div>
+    <div class="copy">🎉 AWESOME JOB!! YOU CRUSHED IT!! 🎸<em>No emoji, no caps, no exclamations.</em></div>
+  </div>
+  <div class="item yes">
+    <div class="mark">DO</div>
+    <div class="copy">Today: the notes on string 5. Five minutes, with feeling.<em>Names the practice; the tagline lands quietly.</em></div>
+  </div>
+  <div class="item no">
+    <div class="mark">NOT</div>
+    <div class="copy">Hey there, music maestro! Let's gooo! ✨<em>Cheery onboarding voice. Not us.</em></div>
+  </div>
+  <div class="item yes">
+    <div class="mark">DO</div>
+    <div class="copy">A half-step flat. Try it again, slower.<em>Direct and useful. Calls the error by name.</em></div>
+  </div>
+</div>
+</body></html>

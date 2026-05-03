@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  
+  <rect x="6" y="6" width="56" height="56" fill="#FF5A2C"></rect>
+  
+  <rect x="2" y="2" width="56" height="56" fill="#F4EEDF" stroke="#152066" stroke-width="2"></rect>
+  
+  <line x1="6" y1="16" x2="54" y2="16" stroke="#152066" stroke-width="1.2"></line>
+  <line x1="6" y1="22" x2="54" y2="22" stroke="#152066" stroke-width="1.2"></line>
+  <line x1="6" y1="28" x2="54" y2="28" stroke="#152066" stroke-width="1.2"></line>
+  <line x1="6" y1="34" x2="54" y2="34" stroke="#152066" stroke-width="1.2"></line>
+  <line x1="6" y1="40" x2="54" y2="40" stroke="#152066" stroke-width="1.2"></line>
+  
+  <circle cx="40" cy="34" r="7" fill="#FF5A2C" stroke="#152066" stroke-width="1.5"></circle>
+  <text x="40" y="37" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#F4EEDF">F</text>
+  
+  <line x1="6" y1="48" x2="54" y2="48" stroke="#152066" stroke-width="2.5"></line>
+  <text x="32" y="56" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="6" fill="#152066">op. xiv</text>
+</svg>

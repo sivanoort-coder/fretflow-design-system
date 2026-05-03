@@ -1,0 +1,35 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body { margin:0; padding:0; }
+  body { background: var(--paper-100); color: var(--ink-700); font-family: var(--font-body); padding: 28px; }
+  h1 { font-family: var(--font-display); font-weight: 700; font-size: 32px; letter-spacing: -0.04em; margin: 0 0 4px; }
+  .sub { font-family: var(--font-editorial); font-style: italic; font-size: 15px; color: var(--ink-500); margin-bottom: 22px; }
+
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .swatch { border: 1.5px solid var(--ink-700); background: var(--paper-50); padding: 12px; text-align:center; }
+  .demo { background: var(--ink-700); height: 56px; margin: 0 auto 10px; width: 100%; }
+  .demo.r-none { border-radius: 0; }
+  .demo.r-sm   { border-radius: 2px; }
+  .demo.r-md   { border-radius: 3px; }
+  .demo.r-pill { border-radius: 999px; height: 56px; width: 56px; }
+  .nm { font-family: var(--font-display); font-weight: 700; font-size: 14px; letter-spacing: -0.02em; color: var(--ink-700); }
+  .px { font-family: var(--font-mono); font-weight: 700; font-size: 9px; letter-spacing: 0.15em; color: var(--ink-500); margin-top: 4px; }
+
+  .note { background: var(--paper-50); border: 1.5px solid var(--ink-700); padding: 14px 16px; margin-top: 18px;
+    font-family: var(--font-editorial); font-style: italic; font-size: 14px; color: var(--ink-500); }
+  .note b { font-style: normal; font-family: var(--font-display); font-weight: 700; color: var(--ink-700); letter-spacing:-0.02em; }
+</style></head><body>
+<h1>Radii.</h1>
+<div class="sub">Riso prints square. Default to zero &mdash; rounding is reserved for note bubbles.</div>
+
+<div class="grid">
+  <div class="swatch"><div class="demo r-none"></div><div class="nm">none</div><div class="px">0&nbsp;PX &middot; DEFAULT</div></div>
+  <div class="swatch"><div class="demo r-sm"></div><div class="nm">sm</div><div class="px">2&nbsp;PX &middot; TAPE</div></div>
+  <div class="swatch"><div class="demo r-md"></div><div class="nm">md</div><div class="px">3&nbsp;PX &middot; SOFT</div></div>
+  <div class="swatch"><div class="demo r-pill"></div><div class="nm">pill</div><div class="px">∞ &middot; NOTES ONLY</div></div>
+</div>
+
+<div class="note"><b>Rule of thumb &mdash;</b> if it isn't a note, it's square. Cards, buttons, fields, badges all default to <b>--radius-none</b>.</div>
+</body></html>

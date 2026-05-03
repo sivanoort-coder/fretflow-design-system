@@ -1,0 +1,26 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body { margin:0; padding:0; }
+  body { background: var(--paper-100); color: var(--ink-700); font-family: var(--font-body); padding: 28px; }
+  h1 { font-family: var(--font-display); font-weight: 700; font-size: 32px; letter-spacing: -0.04em; margin: 0 0 4px; }
+  .sub { font-family: var(--font-editorial); font-style: italic; font-size: 15px; color: var(--ink-500); margin-bottom: 22px; }
+  .row { display:flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-bottom: 22px; }
+  .lbl { font-family: var(--font-mono); font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-500); width: 100%; margin-bottom: 4px; }
+
+  .btn { display:inline-flex; align-items:center; gap:10px; padding: 14px 22px;
+    background: var(--ink-700); color: var(--paper-100); border: 0; cursor: pointer;
+    font-family: var(--font-display); font-weight: 700; font-size: 18px; letter-spacing: -0.02em;
+    box-shadow: 4px 4px 0 var(--spot-700); }
+  .btn .arr { font-family: var(--font-editorial); font-style: italic; font-weight: 400; }
+  .btn-spot { background: var(--spot-700); box-shadow: 4px 4px 0 var(--ink-700); }
+  .btn-ghost { background: transparent; color: var(--ink-700); border: 2px solid var(--ink-700);
+    box-shadow: none; font-family: var(--font-editorial); font-style: italic; font-weight: 500; font-size: 17px; }
+</style></head><body>
+<h1>Buttons.</h1>
+<div class="sub">Three roles. Ink-with-spot-block, spot-with-ink-block, italic ghost.</div>
+<div class="row"><div class="lbl">PRIMARY</div><button class="btn">BEGIN <span class="arr">→</span></button></div>
+<div class="row"><div class="lbl">ACCENT</div><button class="btn btn-spot">GO <span class="arr">→</span></button></div>
+<div class="row"><div class="lbl">GHOST</div><button class="btn btn-ghost">review</button></div>
+</body></html>

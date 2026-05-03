@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fretflow · Hybrid (Riso × Score)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Fraunces:ital,wght@0,400..700;1,400..700&family=Inter+Tight:wght@200..800&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400..700&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #ECEAE4; font-family: 'Inter Tight', system-ui, sans-serif; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="../design-canvas.jsx"></script>
+<script type="text/babel" src="Hybrid.jsx"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+function App() {
+  return (
+    <DesignCanvas>
+      <DCSection
+        id="hybrid"
+        title="Riso × Score — the hybrid"
+        subtitle="Two-color riso print of an editorial sheet-music page. Ultramarine ink + spot orange, paper grain, deliberate misregistration. Sheet-music vocabulary kept intact (staves, treble clef, italic captions, roman-numeral measure counts, tempo marks); huge condensed display type crashes against delicate Garamond italics for editorial contrast.">
+        <DCArtboard id="h-today"    label="Today"    width={320} height={640}><HybridToday/></DCArtboard>
+        <DCArtboard id="h-practice" label="Practice" width={320} height={640}><HybridPractice/></DCArtboard>
+        <DCArtboard id="h-review"   label="Review"   width={320} height={640}><HybridReview/></DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

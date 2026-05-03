@@ -1,0 +1,44 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body { margin:0; padding:0; }
+  body { background: var(--paper-100); color: var(--ink-700); font-family: var(--font-body); padding: 28px; }
+  h1 { font-family: var(--font-display); font-weight: 700; font-size: 32px; letter-spacing: -0.04em; margin: 0 0 4px; }
+  .sub { font-family: var(--font-editorial); font-style: italic; font-size: 15px; color: var(--ink-500); margin-bottom: 22px; }
+
+  .demo { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; padding: 8px 0; }
+  .specimen { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .bubble { width: 56px; height: 56px; border-radius: 999px;
+    display: grid; place-items: center;
+    font-family: var(--font-mono); font-weight: 700; font-size: 20px;
+    border: 1.5px solid var(--ink-700); }
+  .b-spot   { background: var(--spot-700); color: var(--paper-100); }
+  .b-paper  { background: var(--paper-50);  color: var(--ink-700); }
+  .b-ink    { background: var(--ink-700);   color: var(--paper-100); }
+  .b-green  { background: var(--green-500); color: var(--paper-100); }
+  .b-ghost  { background: transparent; border: 1.5px dashed var(--ink-300); color: var(--ink-300); }
+  .cap { font-family: var(--font-mono); font-size: 8px; font-weight:700; letter-spacing: 0.18em; color: var(--ink-500); }
+
+  .lbl { font-family: var(--font-mono); font-size: 9px; font-weight:700; letter-spacing: 0.18em; color: var(--ink-500); margin: 14px 0 6px; }
+</style></head><body>
+<h1>Note bubbles.</h1>
+<div class="sub">The only round things in the system. JetBrains Mono, monospace digits, ink-bordered.</div>
+
+<div class="lbl">STATES</div>
+<div class="demo">
+  <div class="specimen"><div class="bubble b-spot">F</div><div class="cap">PROMPT</div></div>
+  <div class="specimen"><div class="bubble b-spot">F<tspan style="font-size:14px;">♯</tspan></div><div class="cap">ACCIDENTAL</div></div>
+  <div class="specimen"><div class="bubble b-paper">B<span style="font-size:14px;">♭</span></div><div class="cap">SOFT</div></div>
+  <div class="specimen"><div class="bubble b-ink">A</div><div class="cap">FILLED</div></div>
+  <div class="specimen"><div class="bubble b-green">A</div><div class="cap">CORRECT</div></div>
+  <div class="specimen"><div class="bubble b-ghost">?</div><div class="cap">UNKNOWN</div></div>
+</div>
+
+<div class="lbl">SIZES</div>
+<div class="demo" style="align-items: baseline;">
+  <div class="specimen"><div class="bubble b-spot" style="width:36px;height:36px;font-size:14px;">F</div><div class="cap">SM &middot; INLINE</div></div>
+  <div class="specimen"><div class="bubble b-spot" style="width:56px;height:56px;font-size:20px;">F</div><div class="cap">MD &middot; FRETBOARD</div></div>
+  <div class="specimen"><div class="bubble b-spot" style="width:96px;height:96px;font-size:36px;">F</div><div class="cap">LG &middot; HERO</div></div>
+</div>
+</body></html>

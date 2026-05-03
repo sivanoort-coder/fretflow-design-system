@@ -1,0 +1,75 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body { margin:0; padding:0; }
+  body { background: var(--paper-100); color: var(--ink-700); font-family: var(--font-body); padding: 28px; }
+  h1 { font-family: var(--font-display); font-weight: 700; font-size: 32px; letter-spacing: -0.04em; margin: 0 0 4px; }
+  .sub { font-family: var(--font-editorial); font-style: italic; font-size: 15px; color: var(--ink-500); margin-bottom: 22px; }
+  .lbl { font-family: var(--font-mono); font-size: 9px; font-weight:700; letter-spacing: 0.18em; color: var(--ink-500); margin: 14px 0 8px; text-transform: uppercase; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 6px; }
+
+  /* Tape label — like masking tape on a notebook */
+  .tape { display: inline-flex; align-items: center; gap: 6px;
+    background: var(--spot-700); color: var(--paper-100);
+    font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.18em;
+    padding: 5px 12px; border-radius: 2px; text-transform: uppercase; }
+  .tape.ink   { background: var(--ink-700); }
+  .tape.green { background: var(--green-500); }
+  .tape.paper { background: var(--paper-200); color: var(--ink-700); }
+
+  /* Plate badge — large, like a record label */
+  .plate { display: inline-flex; align-items: baseline; gap: 6px;
+    background: var(--ink-700); color: var(--paper-100);
+    padding: 8px 14px; }
+  .plate .num { font-family: var(--font-display); font-weight: 700; font-size: 24px; letter-spacing: -0.04em; }
+  .plate .cap { font-family: var(--font-mono); font-weight: 700; font-size: 9px; letter-spacing: 0.18em; opacity: 0.8; }
+
+  /* Stamp — outlined bordered */
+  .stamp { display: inline-block; padding: 6px 12px;
+    border: 1.5px solid var(--ink-700);
+    font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.18em;
+    color: var(--ink-700); background: transparent; text-transform: uppercase; }
+  .stamp.spot { border-color: var(--spot-700); color: var(--spot-700); }
+
+  /* Counter chip — number + label */
+  .chip { display: inline-flex; align-items: center; gap: 8px;
+    border: 1.5px solid var(--ink-700); background: var(--paper-50); padding: 4px 4px 4px 10px; }
+  .chip .n { font-family: var(--font-mono); font-weight: 700; font-size: 12px; color: var(--ink-700); }
+  .chip .x { background: var(--ink-700); color: var(--paper-100);
+    font-family: var(--font-display); font-weight: 700; font-size: 11px; letter-spacing:-0.02em;
+    padding: 4px 8px; }
+</style></head><body>
+<h1>Badges &amp; chips.</h1>
+<div class="sub">Tape, stamp, plate. The square cousins of buttons &mdash; never round.</div>
+
+<div class="lbl">TAPE LABELS</div>
+<div class="row">
+  <span class="tape">TODAY</span>
+  <span class="tape ink">DAY 14</span>
+  <span class="tape green">IN TUNE</span>
+  <span class="tape paper">DRAFT</span>
+</div>
+
+<div class="lbl">PLATES</div>
+<div class="row">
+  <span class="plate"><span class="num">14</span><span class="cap">DAYS</span></span>
+  <span class="plate" style="background: var(--spot-700);"><span class="num">5</span><span class="cap">MIN</span></span>
+  <span class="plate" style="background: var(--green-500);"><span class="num">7/7</span><span class="cap">PERFECT</span></span>
+</div>
+
+<div class="lbl">STAMPS</div>
+<div class="row">
+  <span class="stamp">REVIEWED</span>
+  <span class="stamp">MEASURE I</span>
+  <span class="stamp spot">DRAFT</span>
+  <span class="stamp">OP. XIV</span>
+</div>
+
+<div class="lbl">COUNTER CHIPS</div>
+<div class="row">
+  <span class="chip"><span class="n">String 5</span><span class="x">14/30</span></span>
+  <span class="chip"><span class="n">Naturals</span><span class="x">7/7</span></span>
+  <span class="chip"><span class="n">Tempo</span><span class="x">♩=72</span></span>
+</div>
+</body></html>

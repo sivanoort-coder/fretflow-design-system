@@ -1,0 +1,31 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body { margin:0; padding:0; }
+  body { background: var(--paper-100); color: var(--ink-700); font-family: var(--font-body); padding: 28px; }
+  h1 { font-family: var(--font-display); font-weight: 700; font-size: 32px; letter-spacing: -0.04em; margin: 0 0 4px; }
+  .sub { font-family: var(--font-editorial); font-style: italic; font-size: 15px; color: var(--ink-500); margin-bottom: 22px; }
+  .lbl { font-family: var(--font-mono); font-size: 9px; font-weight:700; letter-spacing: 0.18em; color: var(--ink-500); margin: 0 0 10px; text-transform: uppercase; }
+  .row { display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-end; margin-bottom: 8px; }
+
+  .scale { display: grid; grid-template-columns: 80px 1fr; align-items: center; gap: 14px; padding: 8px 0; border-bottom: 1.5px solid var(--paper-300); }
+  .scale:last-child { border-bottom: 0; }
+  .scale .nm { font-family: var(--font-mono); font-weight: 700; font-size: 11px; color: var(--ink-700); letter-spacing: 0.10em; }
+  .scale .px { font-family: var(--font-mono); font-size: 9px; color: var(--ink-500); margin-left: 6px; }
+  .scale .bar { height: 14px; background: var(--ink-700); }
+</style></head><body>
+<h1>Spacing &mdash; 4&nbsp;px base.</h1>
+<div class="sub">Eleven steps. The four-bar phrase: 4, 8, 12, 16 &mdash; everything past that is double or triple.</div>
+
+<div class="scale"><div><span class="nm">space-1</span><span class="px">4</span></div><div class="bar" style="width: 4px;"></div></div>
+<div class="scale"><div><span class="nm">space-2</span><span class="px">8</span></div><div class="bar" style="width: 8px;"></div></div>
+<div class="scale"><div><span class="nm">space-3</span><span class="px">12</span></div><div class="bar" style="width: 12px;"></div></div>
+<div class="scale"><div><span class="nm">space-4</span><span class="px">16</span></div><div class="bar" style="width: 16px;"></div></div>
+<div class="scale"><div><span class="nm">space-5</span><span class="px">20</span></div><div class="bar" style="width: 20px;"></div></div>
+<div class="scale"><div><span class="nm">space-6</span><span class="px">24</span></div><div class="bar" style="width: 24px;"></div></div>
+<div class="scale"><div><span class="nm">space-8</span><span class="px">32</span></div><div class="bar" style="width: 32px;"></div></div>
+<div class="scale"><div><span class="nm">space-12</span><span class="px">48</span></div><div class="bar" style="width: 48px;"></div></div>
+<div class="scale"><div><span class="nm">space-16</span><span class="px">64</span></div><div class="bar" style="width: 64px;"></div></div>
+<div class="scale"><div><span class="nm">space-24</span><span class="px">96</span></div><div class="bar" style="width: 96px;"></div></div>
+</body></html>
