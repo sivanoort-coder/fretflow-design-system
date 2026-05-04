@@ -1,16 +1,14 @@
-# Fretflow iOS UI Kit · v2 Riso × Score
+# Fretflow iOS UI kit — v4 (Fretboard-Hero)
 
-High-fidelity React recreation of the Fretflow daily-practice app for iPhone, restyled to the **Riso × Score** design system: ultramarine ink + spot orange on warm newsprint, square corners, hard offset shadows, condensed display crashing against Garamond italics.
-
-Components are simple and mainly cosmetic — meant to be lifted into mockups, decks, and prototypes.
+High-fidelity React recreation of the Fretflow daily-practice app for iPhone, in the **v4 Fretboard-Hero** direction. The fretboard is the hero of every screen — rendered as a real instrument plate on warm parchment — wrapped in soft daily-app fluency: 12–14px corners, paper-50 cards on a paper-100 ground, Fraunces sentence-case headings, EB Garamond italic asides.
 
 ## What's here
 
 - **`index.html`** — interactive demo. One device with a click-through Today → Practice → Complete loop, plus static showcases of Onboarding and Profile.
-- **`FretflowPrimitives.jsx`** — `NoteBubble`, `FFButton`, `FFPill`, `FFCard`, `FFProgress`, `FFLabel`, `FFTabBar`, `FFStreak`. Also exposes the `FF` color/type token object on `window`.
-- **`Fretboard.jsx`** — interactive 6-string fretboard renderer. Highlights notes by `{string, fret, state}`. States: `active | correct | wrong | hint`. Optional `showAllNotes` for study mode. Standard tuning EADGBE.
+- **`FretflowPrimitives.jsx`** — `NoteBubble` (now an answer pad), `FFButton`, `FFPill`, `FFCard`, `FFProgress`, `FFStepper`, `FFLabel`, `FFTabBar`, `FFStreak`. Also exposes the `FF` color/type token object on `window`.
+- **`Fretboard.jsx`** — the instrument renderer. Sits on the warm parchment plate (`fretboardPlate` token). Highlights take `state: active | ask | correct | wrong | hint`. Standard tuning EADGBE.
 - **`Screens.jsx`** — `TodayScreen`, `PracticeScreen`, `CompleteScreen`, `ProfileScreen`, `OnboardingScreen`.
-- **`ios-frame.jsx`** — iPhone device frame from the starter kit.
+- **`ios-frame.jsx`** — iPhone device frame.
 
 ## How to use
 
@@ -30,18 +28,25 @@ Then drop screens inside an `IOSDevice`:
 </IOSDevice>
 ```
 
+## v4 conventions
+
+- **Sentence case everywhere** in app UI. The poster register (Space Grotesk uppercase) is reserved for celebrations and is not used in primitives.
+- **Block shadows are reserved.** Only the primary CTA carries one (4×4 spot orange). At most one hero card per screen may also press-print.
+- **The fretboard is the hero.** Every practice surface routes through `FFCard elevation="plate"` wrapping a `<Fretboard/>`.
+- **Note pads, not bubbles.** `NoteBubble` returns a 12px-radius pad; the same affordance does double-duty as the visible note label and the answer button.
+
 ## Component coverage
 
 | Element | Component |
 | --- | --- |
-| Note labels | `NoteBubble` |
-| Buttons | `FFButton` (primary / secondary / ghost / danger; sm / md / lg) |
-| Pills, badges | `FFPill` (neutral / brass / solid / green / red) — square tape labels |
-| Cards | `FFCard` (flat / lifted / hero with spot misregistration shadow) |
-| Progress | `FFProgress` |
+| Note pads / answers | `NoteBubble` (states: idle / selected / correct / wrong / hint) |
+| Buttons | `FFButton` (primary / ghost / pressed / danger; sm / md / lg) — sentence case |
+| Pills, badges | `FFPill` (neutral / streak / spot / green / red) — soft pills |
+| Cards | `FFCard` (flat / plate / lifted / hero — hero gets the block shadow) |
+| Progress | `FFProgress` (bar) + `FFStepper` (question dots) |
 | Tab bar | `FFTabBar` |
-| Streak | `FFStreak` |
-| Fretboard | `Fretboard` (with `highlights[]`, `onTap`, `showAllNotes`) |
+| Streak | `FFStreak` (soft chip) |
+| Fretboard | `Fretboard` (with `highlights[]`, `onTap`, `showAllNotes`, `showStringLabels`) |
 | Screens | Onboarding, Today, Practice, Complete, Profile |
 
 ## What's intentionally not here

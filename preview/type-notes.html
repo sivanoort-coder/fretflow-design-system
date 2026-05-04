@@ -4,41 +4,68 @@
 <style>
   html,body { margin:0; padding:0; }
   body { background: var(--paper-100); color: var(--ink-700); font-family: var(--font-body); padding: 28px; }
-  h1 { font-family: var(--font-display); font-weight: 700; font-size: 32px; letter-spacing: -0.04em; margin: 0 0 4px; }
-  .sub { font-family: var(--font-editorial); font-style: italic; font-size: 15px; color: var(--ink-500); margin-bottom: 22px; }
+  h1 { font-family: var(--font-heading); font-weight: 500; font-size: 38px; line-height: 1; letter-spacing: -0.02em; margin: 0 0 4px; }
+  .sub { font-family: var(--font-editorial); font-style: italic; font-size: 16px; color: var(--ink-500); margin-bottom: 22px; max-width: 60ch; }
+  .lbl { font-family: var(--font-mono); font-size: 9px; font-weight:700; letter-spacing: 0.16em; color: var(--ink-500); margin: 18px 0 8px; text-transform: uppercase; }
 
-  .demo { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; padding: 8px 0; }
-  .specimen { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-  .bubble { width: 56px; height: 56px; border-radius: 999px;
-    display: grid; place-items: center;
-    font-family: var(--font-mono); font-weight: 700; font-size: 20px;
-    border: 1.5px solid var(--ink-700); }
-  .b-spot   { background: var(--spot-700); color: var(--paper-100); }
-  .b-paper  { background: var(--paper-50);  color: var(--ink-700); }
-  .b-ink    { background: var(--ink-700);   color: var(--paper-100); }
-  .b-green  { background: var(--green-500); color: var(--paper-100); }
-  .b-ghost  { background: transparent; border: 1.5px dashed var(--ink-300); color: var(--ink-300); }
-  .cap { font-family: var(--font-mono); font-size: 8px; font-weight:700; letter-spacing: 0.18em; color: var(--ink-500); }
+  .stage {
+    background: var(--color-fretboard-plate);
+    border: 1px solid var(--ink-300);
+    border-radius: 14px;
+    padding: 18px 14px;
+  }
 
-  .lbl { font-family: var(--font-mono); font-size: 9px; font-weight:700; letter-spacing: 0.18em; color: var(--ink-500); margin: 14px 0 6px; }
+  .pad-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+  .pad {
+    padding: 14px 0;
+    background: var(--paper-50);
+    color: var(--ink-700);
+    border: 1.5px solid var(--ink-700);
+    border-radius: 12px;
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    text-align: center;
+  }
+  .pad.is-selected { background: var(--spot-700); color: var(--paper-100); box-shadow: 3px 3px 0 var(--ink-700); }
+  .pad.is-correct  { background: var(--green-500); color: var(--paper-100); border-color: var(--green-500); }
+  .pad.is-disabled { opacity: 0.4; }
+  .pad sup { font-family: var(--font-editorial); font-style: normal; font-size: 16px; }
+
+  /* Sharp/flat sample */
+  .sf { font-family: var(--font-editorial); font-style: normal; font-feature-settings: "tnum" 0; }
 </style></head><body>
-<h1>Note bubbles.</h1>
-<div class="sub">The only round things in the system. JetBrains Mono, monospace digits, ink-bordered.</div>
+<h1>Note pads.</h1>
+<div class="sub">The note-name affordance. v4 retires the round bubble and replaces it with a 12px-radius pad — so the same component does double-duty as practice answer and note-name display.</div>
 
-<div class="lbl">STATES</div>
-<div class="demo">
-  <div class="specimen"><div class="bubble b-spot">F</div><div class="cap">PROMPT</div></div>
-  <div class="specimen"><div class="bubble b-spot">F<tspan style="font-size:14px;">♯</tspan></div><div class="cap">ACCIDENTAL</div></div>
-  <div class="specimen"><div class="bubble b-paper">B<span style="font-size:14px;">♭</span></div><div class="cap">SOFT</div></div>
-  <div class="specimen"><div class="bubble b-ink">A</div><div class="cap">FILLED</div></div>
-  <div class="specimen"><div class="bubble b-green">A</div><div class="cap">CORRECT</div></div>
-  <div class="specimen"><div class="bubble b-ghost">?</div><div class="cap">UNKNOWN</div></div>
+<div class="lbl">PRACTICE STATES</div>
+<div class="pad-row">
+  <div class="pad">G</div>
+  <div class="pad">A</div>
+  <div class="pad">B</div>
+  <div class="pad is-selected">C</div>
+  <div class="pad">D</div>
+  <div class="pad">E</div>
 </div>
 
-<div class="lbl">SIZES</div>
-<div class="demo" style="align-items: baseline;">
-  <div class="specimen"><div class="bubble b-spot" style="width:36px;height:36px;font-size:14px;">F</div><div class="cap">SM &middot; INLINE</div></div>
-  <div class="specimen"><div class="bubble b-spot" style="width:56px;height:56px;font-size:20px;">F</div><div class="cap">MD &middot; FRETBOARD</div></div>
-  <div class="specimen"><div class="bubble b-spot" style="width:96px;height:96px;font-size:36px;">F</div><div class="cap">LG &middot; HERO</div></div>
+<div class="lbl">RESULT STATES — selected · correct · disabled</div>
+<div class="pad-row">
+  <div class="pad">G</div>
+  <div class="pad is-correct">A</div>
+  <div class="pad is-disabled">B</div>
+  <div class="pad">C</div>
+  <div class="pad">D</div>
+  <div class="pad">E</div>
+</div>
+
+<div class="lbl">ACCIDENTALS</div>
+<div class="pad-row">
+  <div class="pad">F<sup class="sf">♯</sup></div>
+  <div class="pad">B<sup class="sf">♭</sup></div>
+  <div class="pad">C<sup class="sf">♮</sup></div>
+  <div class="pad" style="font-family:var(--font-editorial); font-style:italic; font-size:18px; color:var(--ink-500);">don't<br>know</div>
+  <div class="pad is-disabled">—</div>
+  <div class="pad is-disabled">—</div>
 </div>
 </body></html>

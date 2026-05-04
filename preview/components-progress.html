@@ -4,70 +4,115 @@
 <style>
   html,body { margin:0; padding:0; }
   body { background: var(--paper-100); color: var(--ink-700); font-family: var(--font-body); padding: 28px; }
-  h1 { font-family: var(--font-display); font-weight: 700; font-size: 32px; letter-spacing: -0.04em; margin: 0 0 4px; }
-  .sub { font-family: var(--font-editorial); font-style: italic; font-size: 15px; color: var(--ink-500); margin-bottom: 22px; }
-  .lbl { font-family: var(--font-mono); font-size: 9px; font-weight:700; letter-spacing: 0.18em; color: var(--ink-500); margin: 0 0 10px; text-transform: uppercase; }
-  .row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-bottom: 22px; }
+  h1 { font-family: var(--font-heading); font-weight: 500; font-size: 38px; line-height: 1; letter-spacing: -0.02em; margin: 0 0 4px; }
+  .sub { font-family: var(--font-editorial); font-style: italic; font-size: 16px; color: var(--ink-500); margin-bottom: 22px; max-width: 60ch; }
+  .lbl { font-family: var(--font-mono); font-size: 9px; font-weight: 700; letter-spacing: 0.16em; color: var(--ink-500); margin: 0 0 10px; text-transform: uppercase; }
+  .block { margin-bottom: 28px; }
 
-  /* Linear progress — staff bar with note bubble */
-  .staff { width: 100%; height: 14px; background: var(--paper-200); border: 1.5px solid var(--ink-700); position: relative; }
-  .staff::before { content: ''; position: absolute; left: 0; top: 50%; height: 1.5px; background: var(--ink-700); transform: translateY(-50%); }
-  .staff .fill { background: var(--ink-700); height: 100%; }
-  .staff .fill.spot { background: var(--spot-700); }
-  .staff .head { position: absolute; top: 50%; transform: translate(-50%, -50%);
-    width: 18px; height: 18px; border-radius: 999px; background: var(--spot-700); border: 1.5px solid var(--ink-700); }
+  /* Linear bar — soft, rounded */
+  .bar {
+    width: 100%; height: 8px;
+    background: var(--paper-300);
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+  }
+  .bar .fill {
+    height: 100%;
+    background: var(--ink-700);
+    border-radius: 999px;
+    transition: width 240ms;
+  }
+  .bar .fill.green { background: var(--green-500); }
+  .bar .fill.spot  { background: var(--spot-700); }
 
-  /* Step progress */
-  .steps { display: flex; gap: 4px; align-items: center; }
-  .steps .step { flex: 1; height: 8px; border: 1.5px solid var(--ink-700); background: var(--paper-50); }
+  /* Stepper — question N of M */
+  .steps { display: flex; gap: 6px; align-items: center; }
+  .steps .step {
+    flex: 1;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--paper-300);
+  }
   .steps .step.done { background: var(--ink-700); }
   .steps .step.now  { background: var(--spot-700); }
 
-  /* Streak dots — fourteen days, last is today */
-  .streak { display: flex; gap: 6px; align-items: flex-end; }
-  .streak .dot { width: 14px; height: 14px; border-radius: 999px; border: 1.5px solid var(--ink-700); background: var(--paper-50); }
+  /* Streak ring — fourteen dots, today is solid orange */
+  .streak { display: flex; gap: 5px; align-items: center; }
+  .streak .dot { width: 10px; height: 10px; border-radius: 999px; background: var(--paper-300); }
   .streak .dot.done { background: var(--ink-700); }
-  .streak .dot.today { background: var(--spot-700); width: 20px; height: 20px; }
+  .streak .dot.today { width: 14px; height: 14px; background: var(--spot-700); box-shadow: 0 0 0 2px var(--paper-100), 0 0 0 3px var(--spot-700); }
 
-  /* Big mono counter */
+  /* Counter — heading face, mono "of N" */
   .counter {
-    font-family: var(--font-display); font-weight: 700; font-size: 64px; letter-spacing: -0.05em;
-    color: var(--ink-700); line-height: 0.85;
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 56px;
+    letter-spacing: -0.03em;
+    color: var(--ink-700);
+    line-height: 0.85;
   }
   .counter .of {
-    font-family: var(--font-editorial); font-style: italic; font-weight: 400; font-size: 22px;
-    color: var(--ink-500); letter-spacing: 0;
+    font-family: var(--font-editorial);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    color: var(--ink-500);
+    letter-spacing: 0;
+    margin-left: 6px;
   }
+
+  /* Ring chart — for accuracy */
+  .ring { width: 96px; height: 96px; transform: rotate(-90deg); }
 </style></head><body>
 <h1>Progress.</h1>
-<div class="sub">Hard rules, square fills. Round only on the moving note bubble.</div>
+<div class="sub">Soft, rounded, paper-300 tracks. The streak's "today" dot is the brightest pixel on screen. Numbers in Fraunces; the "of N" is Garamond italic.</div>
 
-<div class="lbl">STAFF BAR &mdash; ink fill</div>
-<div class="staff" style="margin-bottom: 22px;">
-  <div class="fill" style="width: 62%;"></div>
-  <div class="head" style="left: 62%;"></div>
+<div class="block">
+  <div class="lbl">PROGRESS BAR — ink fill, 62%</div>
+  <div class="bar"><div class="fill" style="width: 62%;"></div></div>
 </div>
 
-<div class="lbl">STAFF BAR &mdash; spot fill</div>
-<div class="staff" style="margin-bottom: 22px;">
-  <div class="fill spot" style="width: 38%;"></div>
-  <div class="head" style="left: 38%; background: var(--ink-700);"></div>
+<div class="block">
+  <div class="lbl">PROGRESS BAR — spot fill, 38%</div>
+  <div class="bar"><div class="fill spot" style="width: 38%;"></div></div>
 </div>
 
-<div class="lbl">STEPS &mdash; lesson 3 of 7</div>
-<div class="steps" style="margin-bottom: 22px;">
-  <div class="step done"></div><div class="step done"></div><div class="step now"></div>
-  <div class="step"></div><div class="step"></div><div class="step"></div><div class="step"></div>
+<div class="block">
+  <div class="lbl">PROGRESS BAR — green fill, 87% accuracy</div>
+  <div class="bar"><div class="fill green" style="width: 87%;"></div></div>
 </div>
 
-<div class="lbl">STREAK &mdash; fourteen days</div>
-<div class="streak" style="margin-bottom: 22px;">
-  <div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div>
-  <div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div>
-  <div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div>
-  <div class="dot done"></div><div class="dot today"></div>
+<div class="block">
+  <div class="lbl">STEPPER — question 3 of 8</div>
+  <div class="steps">
+    <div class="step done"></div><div class="step done"></div><div class="step now"></div>
+    <div class="step"></div><div class="step"></div><div class="step"></div><div class="step"></div><div class="step"></div>
+  </div>
 </div>
 
-<div class="lbl">COUNTER</div>
-<div class="counter">14<span class="of"> &nbsp;of 30</span></div>
+<div class="block">
+  <div class="lbl">STREAK — fourteen days, today</div>
+  <div class="streak">
+    <div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div>
+    <div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div>
+    <div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div>
+    <div class="dot done"></div><div class="dot today"></div>
+  </div>
+</div>
+
+<div class="block" style="display:flex; align-items:center; gap: 28px;">
+  <div>
+    <div class="lbl">COUNTER</div>
+    <div class="counter">14<span class="of">of 30</span></div>
+  </div>
+  <div>
+    <div class="lbl">RING — accuracy 87%</div>
+    <svg class="ring" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="42" fill="none" stroke="var(--paper-300)" stroke-width="10"/>
+      <circle cx="50" cy="50" r="42" fill="none" stroke="var(--green-500)" stroke-width="10"
+        stroke-dasharray="263.9" stroke-dashoffset="34.3" stroke-linecap="round"/>
+    </svg>
+  </div>
+</div>
 </body></html>

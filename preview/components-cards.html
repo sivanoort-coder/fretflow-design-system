@@ -4,79 +4,114 @@
 <style>
   html,body { margin:0; padding:0; }
   body { background: var(--paper-100); color: var(--ink-700); font-family: var(--font-body); padding: 28px; }
-  h1 { font-family: var(--font-display); font-weight: 700; font-size: 32px; letter-spacing: -0.04em; margin: 0 0 4px; }
-  .sub { font-family: var(--font-editorial); font-style: italic; font-size: 15px; color: var(--ink-500); margin-bottom: 22px; }
-
+  h1 { font-family: var(--font-heading); font-weight: 500; font-size: 38px; line-height: 1; letter-spacing: -0.02em; margin: 0 0 4px; }
+  .sub { font-family: var(--font-editorial); font-style: italic; font-size: 16px; color: var(--ink-500); margin-bottom: 22px; max-width: 60ch; }
   .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .lbl { font-family: var(--font-mono); font-size: 9px; font-weight:700; letter-spacing: 0.18em; color: var(--ink-500); margin-bottom: 8px; text-transform: uppercase; }
+  .lbl { font-family: var(--font-mono); font-size: 9px; font-weight: 700; letter-spacing: 0.16em; color: var(--ink-500); margin-bottom: 8px; text-transform: uppercase; }
 
-  /* Tape label — taped to top-left of card */
-  .tape { display: inline-block; background: var(--spot-700); color: var(--paper-100);
-    font-family: var(--font-mono); font-weight: 700; font-size: 9px; letter-spacing: 0.18em;
-    padding: 4px 10px; border-radius: 2px; }
-
-  /* Sheet card — the workhorse */
-  .sheet { background: var(--paper-50); border: 1.5px solid var(--ink-700); padding: 18px 20px; position: relative; }
-  .sheet .ttl { font-family: var(--font-display); font-weight:700; font-size: 22px; letter-spacing:-0.03em; margin-top: 12px; }
-  .sheet .body { font-family: var(--font-editorial); font-style: italic; font-size: 14px; color: var(--ink-500); margin-top: 4px; }
-
-  /* Pressed card — with misregistration shadow */
-  .pressed { background: var(--paper-50); border: 1.5px solid var(--ink-700); padding: 18px 20px;
-    box-shadow: var(--shadow-press); }
-
-  /* Plate card — inverted, ink fill */
-  .plate { background: var(--ink-700); color: var(--paper-100); padding: 18px 20px; }
-  .plate .num { font-family: var(--font-display); font-weight:700; font-size: 56px; letter-spacing:-0.05em; line-height: 0.85; }
-  .plate .cap { font-family: var(--font-mono); font-size: 9px; font-weight:700; letter-spacing: 0.18em; opacity: 0.8; margin-top: 8px; }
-
-  /* Score card — staff lines as background */
-  .score { background: var(--paper-50); border: 1.5px solid var(--ink-700); padding: 18px 20px;
-    background-image:
-      linear-gradient(var(--ink-700), var(--ink-700)),
-      linear-gradient(var(--ink-700), var(--ink-700)),
-      linear-gradient(var(--ink-700), var(--ink-700)),
-      linear-gradient(var(--ink-700), var(--ink-700)),
-      linear-gradient(var(--ink-700), var(--ink-700));
-    background-size: 100% 1px;
-    background-repeat: no-repeat;
-    background-position: 0 30%, 0 45%, 0 60%, 0 75%, 0 90%;
+  /* Default card — paper-50 fill, ink-300 hairline border, 14px radii */
+  .card-default {
+    background: var(--paper-50);
+    border: 1px solid var(--ink-300);
+    border-radius: 14px;
+    padding: 18px 20px;
   }
+
+  /* Press-printed card — 4×4 spot block shadow, full-strength ink border */
+  .card-press {
+    background: var(--paper-50);
+    border: 1.5px solid var(--ink-700);
+    border-radius: 14px;
+    padding: 18px 20px;
+    box-shadow: 4px 4px 0 var(--spot-700);
+  }
+
+  /* Instrument plate — the warm parchment behind any rendered instrument */
+  .card-plate {
+    background: var(--color-fretboard-plate);
+    border: 1px solid var(--ink-300);
+    border-radius: 14px;
+    padding: 18px 14px;
+  }
+
+  /* Stat card — small, list-row style */
+  .card-stat {
+    background: var(--paper-50);
+    border: 1px solid var(--ink-300);
+    border-radius: 12px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+  .card-stat .v { font-family: var(--font-heading); font-weight: 500; font-size: 30px; line-height: 1; letter-spacing: -0.02em; color: var(--ink-700); }
+
+  .ttl { font-family: var(--font-heading); font-weight: 500; font-size: 22px; line-height: 1.15; letter-spacing: -0.02em; margin-top: 4px; }
+  .body { font-family: var(--font-editorial); font-style: italic; font-size: 14px; color: var(--ink-500); margin-top: 4px; }
+
+  /* Mini fretboard inside the plate */
+  .fb { width: 100%; }
 </style></head><body>
 <h1>Cards.</h1>
-<div class="sub">Square corners only. Riso prints square &mdash; rounded edges read as digital.</div>
+<div class="sub">Paper-50 fill on paper-100 ground. 12–14px iOS-native corners. Block shadow only on press-printed cards — never more than two visible per screen.</div>
 
 <div class="grid">
   <div>
-    <div class="lbl">SHEET &mdash; default</div>
-    <div class="sheet">
-      <span class="tape">TODAY</span>
-      <div class="ttl">String 5, all naturals.</div>
-      <div class="body">Five minutes &mdash; with feeling.</div>
+    <div class="lbl">DEFAULT — hairline ink-300</div>
+    <div class="card-default">
+      <div class="lbl" style="margin: 0 0 6px;">TODAY'S RANGE</div>
+      <div class="ttl">Notes on the A string</div>
+      <div class="body">Five notes between the nut and seventh fret.</div>
     </div>
   </div>
 
   <div>
-    <div class="lbl">PRESSED &mdash; with shadow</div>
-    <div class="pressed">
-      <span class="tape" style="background: var(--ink-700);">DAY 14</span>
-      <div style="font-family: var(--font-display); font-weight:700; font-size: 22px; letter-spacing:-0.03em; margin-top: 12px;">Fourteen days unbroken.</div>
-      <div style="font-family: var(--font-editorial); font-style: italic; font-size: 14px; color: var(--ink-500); margin-top: 4px;">&mdash; longest run yet.</div>
+    <div class="lbl">PRESS-PRINTED — 4×4 block shadow</div>
+    <div class="card-press">
+      <div class="lbl" style="margin: 0 0 6px;">SESSION COMPLETE</div>
+      <div class="ttl">Seven of eight, on the A string.</div>
+      <div class="body">Drill the one you missed?</div>
     </div>
   </div>
 
   <div>
-    <div class="lbl">PLATE &mdash; inverted</div>
-    <div class="plate">
-      <div class="num">04:32</div>
-      <div class="cap">SESSION ELAPSED</div>
+    <div class="lbl">INSTRUMENT PLATE — warm parchment</div>
+    <div class="card-plate">
+      <svg viewBox="0 0 234 116" class="fb" style="display:block; overflow:visible;">
+        <rect x="23" y="10" width="200" height="84" fill="#EFE6CF" stroke="#152066" stroke-width="1"/>
+        <rect x="21" y="10" width="3" height="84" fill="#152066"/>
+        <line x1="52" y1="10" x2="52" y2="94" stroke="#152066" stroke-width="0.8" opacity="0.85"/>
+        <line x1="81" y1="10" x2="81" y2="94" stroke="#152066" stroke-width="0.8" opacity="0.85"/>
+        <line x1="110" y1="10" x2="110" y2="94" stroke="#152066" stroke-width="0.8" opacity="0.85"/>
+        <line x1="139" y1="10" x2="139" y2="94" stroke="#152066" stroke-width="0.8" opacity="0.85"/>
+        <line x1="168" y1="10" x2="168" y2="94" stroke="#152066" stroke-width="0.8" opacity="0.85"/>
+        <line x1="197" y1="10" x2="197" y2="94" stroke="#152066" stroke-width="0.8" opacity="0.85"/>
+        <line x1="226" y1="10" x2="226" y2="94" stroke="#152066" stroke-width="0.8" opacity="0.85"/>
+        <circle cx="66" cy="52" r="2.4" fill="#152066" opacity="0.18"/>
+        <circle cx="95" cy="52" r="2.4" fill="#152066" opacity="0.18"/>
+        <circle cx="124" cy="52" r="2.4" fill="#152066" opacity="0.18"/>
+        <line x1="18" y1="18" x2="222" y2="18" stroke="#152066" stroke-width="0.6"/>
+        <line x1="18" y1="29" x2="222" y2="29" stroke="#152066" stroke-width="0.6"/>
+        <line x1="18" y1="40" x2="222" y2="40" stroke="#152066" stroke-width="0.6"/>
+        <line x1="18" y1="52" x2="222" y2="52" stroke="#152066" stroke-width="1"/>
+        <line x1="18" y1="64" x2="222" y2="64" stroke="#152066" stroke-width="1"/>
+        <line x1="18" y1="76" x2="222" y2="76" stroke="#152066" stroke-width="1"/>
+        <text x="13" y="21" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#152066" opacity="0.65">e</text>
+        <text x="13" y="32" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#152066" opacity="0.65">B</text>
+        <text x="13" y="43" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#152066" opacity="0.65">G</text>
+        <text x="13" y="55" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#152066" opacity="0.65">D</text>
+        <text x="13" y="67" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#152066" opacity="0.65">A</text>
+        <text x="13" y="79" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#152066" opacity="0.65">E</text>
+        <circle cx="68" cy="65.5" r="7.5" fill="#FF5A2C" opacity="0.75"/>
+        <circle cx="66.5" cy="64" r="7" fill="#152066" stroke="#F4EEDF" stroke-width="1.5"/>
+      </svg>
     </div>
   </div>
 
   <div>
-    <div class="lbl">SCORE &mdash; staff motif</div>
-    <div class="score" style="min-height: 110px;">
-      <div style="font-family: var(--font-display); font-weight:700; font-size: 18px; letter-spacing:-0.03em;">In tune.</div>
-      <div style="font-family: var(--font-editorial); font-style: italic; font-size: 13px; color: var(--ink-500);">F major &mdash; third fret.</div>
+    <div class="lbl">STAT GRID — small cards on a row</div>
+    <div style="display:grid; grid-template-columns: repeat(3,1fr); gap: 8px;">
+      <div class="card-stat"><div class="lbl" style="margin:0 0 4px;">ACCURACY</div><div class="v" style="color: var(--green-500);">87%</div></div>
+      <div class="card-stat"><div class="lbl" style="margin:0 0 4px;">TIME</div><div class="v">4:58</div></div>
+      <div class="card-stat"><div class="lbl" style="margin:0 0 4px;">STREAK</div><div class="v" style="color: var(--spot-700);">14d</div></div>
     </div>
   </div>
 </div>

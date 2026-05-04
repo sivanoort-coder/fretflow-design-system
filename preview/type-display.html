@@ -4,23 +4,24 @@
 <style>
   html,body { margin:0; padding:0; }
   body { background: var(--paper-100); color: var(--ink-700); font-family: var(--font-body); padding: 28px; }
-  .row { border-top: 1px solid var(--ink-700); padding: 16px 0; display: grid; grid-template-columns: 160px 1fr; gap: 20px; align-items: baseline; }
-  .row:first-child { border-top: 0; padding-top: 0; }
-  .nm { font-family: var(--font-mono); font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-500); }
-  .nm small { display: block; margin-top: 4px; font-family: var(--font-editorial); font-style: italic; font-weight: 400; font-size: 11px; text-transform: none; letter-spacing: 0; }
-  h1 { font-family: var(--font-display); font-weight: 700; font-size: 32px; letter-spacing: -0.04em; margin: 0 0 4px; }
-  .sub { font-family: var(--font-editorial); font-style: italic; font-size: 15px; color: var(--ink-500); margin-bottom: 18px; }
+  .row { border-top: 1px solid var(--paper-300); padding: 16px 0; display: grid; grid-template-columns: 170px 1fr; gap: 20px; align-items: baseline; }
+  .row:first-of-type { border-top: 0; padding-top: 0; }
+  .nm { font-family: var(--font-mono); font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-500); }
+  .nm small { display: block; margin-top: 4px; font-family: var(--font-editorial); font-style: italic; font-weight: 400; font-size: 11px; text-transform: none; letter-spacing: 0; color: var(--ink-500); }
+  h1 { font-family: var(--font-heading); font-weight: 500; font-size: 38px; line-height: 1; letter-spacing: -0.02em; margin: 0 0 4px; }
+  .sub { font-family: var(--font-editorial); font-style: italic; font-size: 16px; color: var(--ink-500); margin-bottom: 22px; }
 </style></head><body>
 <h1>Three voices.</h1>
-<div class="sub">Display, editorial, mono — every screen uses all three.</div>
+<div class="sub">Fraunces sentence-case for headings, EB Garamond italic for the second voice, Inter Tight for body, JetBrains Mono for tiny meta. The poster register is reserved.</div>
 
-<div class="row"><div class="nm">DISPLAY · LG<small>Space Grotesk 700</small></div><div class="fr-display-lg">String five.</div></div>
-<div class="row"><div class="nm">DISPLAY · MD<small>Space Grotesk 700</small></div><div class="fr-display-md">Name this note.</div></div>
-<div class="row"><div class="nm">DISPLAY · SM<small>Space Grotesk 700</small></div><div class="fr-display-sm">Today's session.</div></div>
-<div class="row"><div class="nm">EDITORIAL · LG<small>EB Garamond italic</small></div><div class="fr-editorial-lg">Five minutes — <em style="color:var(--spot-700)">with feeling.</em></div></div>
-<div class="row"><div class="nm">EDITORIAL<small>EB Garamond italic</small></div><div class="fr-editorial">measure iii of viii — andante.</div></div>
-<div class="row"><div class="nm">BODY<small>Inter Tight 400</small></div><div class="fr-body">Fretflow turns fretboard memorization into a five-minute daily ritual.</div></div>
-<div class="row"><div class="nm">MONO · LABEL<small>JetBrains Mono</small></div><div class="fr-mono-label">DAY 14 · STREAK ACTIVE</div></div>
-<div class="row"><div class="nm">MONO · DATA<small>JetBrains Mono</small></div><div class="fr-mono-data">02:14</div></div>
-<div class="row"><div class="nm">GLYPHS<small>Garamond</small></div><div style="font-family:var(--font-editorial); font-size:32px;">𝄞 &nbsp; ♯ &nbsp; ♭ &nbsp; ♮ &nbsp; ♩</div></div>
+<div class="row"><div class="nm">HEADING · LG<small>Fraunces 500</small></div><div class="fr-h-lg">Today, the A string.</div></div>
+<div class="row"><div class="nm">HEADING · MD<small>Fraunces 500</small></div><div class="fr-h-md">What note is this?</div></div>
+<div class="row"><div class="nm">HEADING · SM<small>Fraunces 500</small></div><div class="fr-h-sm">Settings</div></div>
+<div class="row"><div class="nm">EDITORIAL · LG<small>EB Garamond italic</small></div><div class="fr-editorial-lg">Five notes between the nut and seventh fret.</div></div>
+<div class="row"><div class="nm">EDITORIAL<small>EB Garamond italic</small></div><div class="fr-editorial">About five minutes.</div></div>
+<div class="row"><div class="nm">BODY-STRONG<small>Inter Tight 600</small></div><div class="fr-body-strong">Begin practice</div></div>
+<div class="row"><div class="nm">BODY<small>Inter Tight 400</small></div><div class="fr-body">Use 15px for paragraph copy on settings rows and any extended reading.</div></div>
+<div class="row"><div class="nm">MONO · LABEL<small>JetBrains Mono — meta</small></div><div class="fr-mono-label">TODAY'S RANGE</div></div>
+<div class="row"><div class="nm">POSTER · LG<small>Space Grotesk — celebration only</small></div><div><span class="fr-poster-lg" style="font-size:38px;">DAY 14.</span></div></div>
+<div class="row"><div class="nm">GLYPHS<small>Garamond</small></div><div style="font-family:var(--font-editorial); font-size:32px; color:var(--ink-700);">♯ &nbsp; ♭ &nbsp; ♮ &nbsp; ♩ &nbsp; 𝄞</div></div>
 </body></html>
