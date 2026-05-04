@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fretflow — Onboarding Flow C (interactive)</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #F4EEDF; min-height: 100vh; font-family: 'Inter Tight', system-ui, sans-serif; color: #152066; }
+  .stage { display: flex; flex-direction: column; align-items: center; gap: 22px; padding: 36px 16px 64px; }
+  .heading { text-align: center; max-width: 640px; }
+  .heading h1 { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 40px; line-height: 1; margin: 0; letter-spacing: -0.02em; color: #152066; }
+  .heading p { margin: 12px auto 0; font-family: 'Inter Tight', system-ui, sans-serif; font-size: 15px; color: #5A6499; max-width: 480px; line-height: 1.5; }
+  .label { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #5A6499; text-align: center; margin-bottom: 10px; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="ios-frame.jsx"></script>
+<script type="text/babel" src="FretflowPrimitives.jsx"></script>
+<script type="text/babel" src="Fretboard.jsx"></script>
+<script type="text/babel" src="OnboardingHelpers.jsx"></script>
+<script type="text/babel" src="FlowC.jsx"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState } = React;
+
+function App() {
+  const [step, setStep] = useState(0);
+  const [picked, setPicked] = useState('guitar');
+  const [mins, setMins] = useState(5);
+  const [time, setTime] = useState('18:00');
+
+  const next = () => setStep(s => Math.min(s + 1, 6));
+  const back = () => setStep(s => Math.max(s - 1, 0));
+
+  const screens = [
+    <FlowC.Intro onNext={next}/>,
+    <FlowC.Calibrate onNext={next} onBack={back}/>,
+    <FlowC.Instrument picked={picked} setPicked={setPicked} onNext={next} onBack={back}/>,
+    <FlowC.Goal mins={mins} setMins={setMins} onNext={next} onBack={back}/>,
+    <FlowC.Reminder time={time} setTime={setTime} onNext={next} onBack={back}/>,
+    <FlowC.Taste onNext={next} onBack={back}/>,
+    <FlowC.Triumph onBack={back}/>,
+  ];
+
+  return (
+    <div className="stage">
+      <div className="heading">
+        <h1>Fretflow onboarding · interactive.</h1>
+        <p>The ambitious flow, end-to-end. Tap through to feel it. This is the spec for production.</p>
+      </div>
+      <div className="label">Step {step + 1} of {screens.length}</div>
+      <IOSDevice width={390} height={780} dark={false}>
+        <div style={{ width: '100%', height: '100%', background: '#F4EEDF', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+          {screens[step]}
+        </div>
+      </IOSDevice>
+      <div style={{ display: 'flex', gap: 10 }}>
+        <button onClick={back} disabled={step === 0} style={{
+          padding: '10px 18px', borderRadius: 999, background: 'transparent',
+          border: '1.5px solid #152066', color: '#152066', fontFamily: 'Inter Tight', fontWeight: 600, fontSize: 14,
+          cursor: step === 0 ? 'not-allowed' : 'pointer', opacity: step === 0 ? 0.4 : 1,
+        }}>← back</button>
+        <button onClick={() => setStep(0)} style={{
+          padding: '10px 18px', borderRadius: 999, background: 'transparent',
+          border: '1.5px solid #5A6499', color: '#5A6499', fontFamily: 'EB Garamond', fontStyle: 'italic', fontSize: 14,
+          cursor: 'pointer',
+        }}>restart</button>
+        <button onClick={next} disabled={step === screens.length - 1} style={{
+          padding: '10px 18px', borderRadius: 999, background: '#152066',
+          border: '1.5px solid #152066', color: '#F4EEDF', fontFamily: 'Inter Tight', fontWeight: 600, fontSize: 14,
+          cursor: step === screens.length - 1 ? 'not-allowed' : 'pointer', opacity: step === screens.length - 1 ? 0.4 : 1,
+        }}>next →</button>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
