@@ -2,716 +2,810 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Fretflow · Design System v2</title>
+<title>Fretflow Design System · v4 Editorial Warm</title>
 <link rel="stylesheet" href="colors_and_type.css">
 <style>
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
-  body {
+  html, body {
+    margin: 0; padding: 0;
     background: var(--paper-100);
-    color: var(--ink-700);
+    color: var(--color-fg);
     font-family: var(--font-body);
-    min-height: 100vh;
-    position: relative;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
-  /* paper grain on the whole page */
+  body { padding: 64px 8vw 120px; max-width: 1180px; margin: 0 auto; }
   body::after {
     content: "";
     position: fixed; inset: 0;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.85' numOctaves='2' seed='7'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
     mix-blend-mode: multiply;
-    opacity: 0.14;
+    opacity: 0.10;
     pointer-events: none;
     z-index: 100;
   }
-
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 64px 32px 120px; position: relative; }
-
-  /* MASTHEAD */
-  .masthead {
-    border-bottom: 2px solid var(--ink-700);
-    padding-bottom: 14px;
-    display: flex; justify-content: space-between; align-items: flex-end;
-    margin-bottom: 24px;
+  h2 {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 96px 0 6px;
+    color: var(--color-fg);
   }
-  .masthead .mh-l {
-    font-family: var(--font-editorial); font-style: italic; font-size: 18px;
+  h2:first-child { margin-top: 0; }
+  .section-sub {
+    font-family: var(--font-editorial);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--color-fg-secondary);
+    margin: 0 0 28px;
+    max-width: 60ch;
   }
-  .masthead .mh-r {
-    background: var(--spot-700); color: var(--paper-100);
-    padding: 4px 10px; font-family: var(--font-mono);
-    font-size: 11px; letter-spacing: 0.18em; font-weight: 700;
-    transform: translateY(2px);
-  }
-
-  /* HERO display headline with offset */
-  .hero { position: relative; line-height: 0.85; margin: 24px 0 16px; }
-  .hero .echo, .hero .ink {
-    font-family: var(--font-display);
+  .section-mono {
+    font-family: var(--font-mono);
+    font-size: 9px;
     font-weight: 700;
-    font-size: clamp(72px, 12vw, 132px);
-    letter-spacing: -0.06em;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-fg-secondary);
+    margin: 0 0 6px;
   }
-  .hero .echo {
-    color: var(--spot-700); position: absolute; top: 5px; left: 5px; opacity: 0.92;
+  .grid { display: grid; gap: 18px; }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+  .grid-5 { grid-template-columns: repeat(5, 1fr); }
+  .grid-6 { grid-template-columns: repeat(6, 1fr); }
+  @media (max-width: 880px) {
+    .grid-3, .grid-4, .grid-5, .grid-6 { grid-template-columns: repeat(2, 1fr); }
   }
-  .hero .ink { color: var(--ink-700); position: relative; }
-  .hero .sub {
-    font-family: var(--font-editorial); font-style: italic;
-    font-size: 22px; line-height: 1.3; margin-top: 14px; max-width: 56ch;
+  hr.rule {
+    border: 0;
+    border-top: 1px solid var(--ink-700);
+    margin: 96px 0 0;
+    opacity: 0.6;
   }
-  .hero .sub em { color: var(--spot-700); font-style: italic; }
 
-  /* SECTION */
-  section { margin-top: 72px; }
-  .sec-head {
-    display: flex; justify-content: space-between; align-items: flex-end;
-    border-bottom: 1px solid var(--ink-700); padding-bottom: 8px; margin-bottom: 28px;
+  /* ─── Title strip ─── */
+  .titleblock {
+    border-top: 2px solid var(--ink-700);
+    border-bottom: 2px solid var(--ink-700);
+    padding: 32px 0;
+    margin-bottom: 64px;
   }
-  .sec-head h2 {
+  .titleblock .meta {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 14px;
+  }
+  .titleblock h1 {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 92px;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
     margin: 0;
-    font-family: var(--font-display); font-weight: 700;
-    font-size: 44px; letter-spacing: -0.04em; color: var(--ink-700);
+    color: var(--color-fg);
   }
-  .sec-head .sec-meta {
-    font-family: var(--font-mono); font-size: 10px; font-weight: 700;
-    letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-500);
-  }
-  .sec-head .sec-sub {
-    font-family: var(--font-editorial); font-style: italic;
-    font-size: 16px; color: var(--ink-500);
-  }
-
-  .lead {
-    font-family: var(--font-editorial); font-style: italic;
-    font-size: 18px; line-height: 1.4; max-width: 64ch; margin: 0 0 24px;
+  .titleblock .lede {
+    font-family: var(--font-editorial);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--color-fg-secondary);
+    margin: 18px 0 0;
+    max-width: 60ch;
   }
 
-  /* GRID */
-  .grid { display: grid; gap: 16px; }
-  .grid.c2 { grid-template-columns: repeat(2, 1fr); }
-  .grid.c3 { grid-template-columns: repeat(3, 1fr); }
-  .grid.c4 { grid-template-columns: repeat(4, 1fr); }
-  .grid.c5 { grid-template-columns: repeat(5, 1fr); }
-  @media (max-width: 720px) {
-    .grid.c3, .grid.c4, .grid.c5 { grid-template-columns: repeat(2, 1fr); }
-  }
-
-  /* COLOR SWATCH */
+  /* ─── Color swatch ─── */
   .swatch {
-    border: 1.5px solid var(--ink-700);
+    border: 1px solid var(--ink-700);
     background: var(--paper-50);
     padding: 0;
+    overflow: hidden;
+    border-radius: 12px;
   }
-  .swatch .chip { aspect-ratio: 1.6; }
-  .swatch .meta { padding: 10px 12px; border-top: 1.5px solid var(--ink-700); }
-  .swatch .name {
-    font-family: var(--font-display); font-weight: 700;
-    font-size: 18px; letter-spacing: -0.02em; line-height: 1;
+  .swatch .chip { height: 96px; }
+  .swatch .info { padding: 14px 14px 16px; }
+  .swatch .name { font-family: var(--font-heading); font-size: 18px; font-weight: 500; letter-spacing: -0.01em; }
+  .swatch .role { font-family: var(--font-editorial); font-style: italic; font-size: 13px; color: var(--color-fg-secondary); margin: 2px 0 8px; }
+  .swatch .hex  { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.10em; color: var(--color-fg-secondary); }
+
+  /* ─── Type specimen ─── */
+  .specimen {
+    border-bottom: 1px solid var(--paper-300);
+    padding: 22px 0;
   }
-  .swatch .vals {
-    display: flex; justify-content: space-between; margin-top: 6px;
-    font-family: var(--font-mono); font-size: 9px; font-weight: 700;
-    letter-spacing: 0.15em; color: var(--ink-500);
+  .specimen:last-child { border-bottom: 0; }
+  .specimen .label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-fg-secondary);
+    margin-bottom: 8px;
+  }
+  .specimen .meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-fg-muted);
+    letter-spacing: 0.06em;
+    margin-top: 6px;
   }
 
-  /* CARDS — press-printed plates */
-  .plate {
-    border: 1.5px solid var(--ink-700);
-    background: var(--paper-50);
-    padding: 20px;
-    box-shadow: var(--shadow-press);
+  /* ─── Token row ─── */
+  .tokrow {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--paper-300);
+    gap: 16px;
   }
-  .plate-flat {
-    border: 1.5px solid var(--ink-700);
+  .tokrow:last-child { border-bottom: 0; }
+  .tokrow .name { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.06em; color: var(--color-fg); }
+  .tokrow .desc { font-family: var(--font-editorial); font-style: italic; font-size: 14px; color: var(--color-fg-secondary); }
+  .tokrow .demo { display: flex; justify-content: flex-end; }
+
+  /* ─── Component cards ─── */
+  .demo-frame {
     background: var(--paper-50);
-    padding: 20px;
+    border: 1px solid var(--ink-300);
+    border-radius: 14px;
+    padding: 28px;
+    position: relative;
+  }
+  .demo-frame .demo-label {
+    position: absolute;
+    top: -8px; left: 18px;
+    background: var(--paper-100);
+    padding: 0 8px;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-fg-secondary);
   }
 
-  /* BUTTONS */
+  /* ─── Buttons ─── */
   .btn {
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 14px 22px;
-    background: var(--ink-700); color: var(--paper-100);
-    border: 0; cursor: pointer;
-    font-family: var(--font-display); font-weight: 700;
-    font-size: 18px; letter-spacing: -0.02em;
-    box-shadow: 4px 4px 0 var(--spot-700);
-    transition: transform 150ms var(--ease-string), box-shadow 150ms var(--ease-string);
+    display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+    padding: 18px 22px;
+    border-radius: 14px;
+    border: 0;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    transition: transform var(--dur-tap) var(--ease-string), box-shadow var(--dur-tap) var(--ease-string);
   }
-  .btn:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 var(--spot-700); }
-  .btn:active { transform: translate(4px, 4px); box-shadow: 0 0 0 var(--spot-700); }
-  .btn .arr {
-    font-family: var(--font-editorial); font-style: italic; font-weight: 400;
+  .btn-primary {
+    background: var(--ink-700);
+    color: var(--paper-100);
+    box-shadow: 4px 4px 0 var(--spot-700);
+  }
+  .btn-primary:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 0 var(--spot-700);
   }
   .btn-ghost {
-    background: transparent; color: var(--ink-700);
-    border: 2px solid var(--ink-700); box-shadow: none;
-    font-family: var(--font-editorial); font-style: italic;
-    font-weight: 500; font-size: 17px;
+    background: transparent;
+    color: var(--ink-700);
+    border: 1.5px solid var(--ink-700);
   }
-  .btn-ghost:hover { background: var(--paper-200); transform: none; box-shadow: none; }
-  .btn-spot {
-    background: var(--spot-700); color: var(--paper-100); box-shadow: 4px 4px 0 var(--ink-700);
+  .btn-arrow {
+    font-family: var(--font-editorial);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
   }
-  .btn-spot:active { box-shadow: 0 0 0 var(--ink-700); }
 
-  /* answer pad */
+  /* ─── Answer pad ─── */
+  .pad-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
   .pad {
+    padding: 16px 0;
+    background: var(--paper-50);
+    color: var(--ink-700);
+    border: 1.5px solid var(--ink-700);
+    border-radius: 12px;
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    text-align: center;
+    cursor: pointer;
+  }
+  .pad.is-selected {
+    background: var(--spot-700);
+    color: var(--paper-100);
+    box-shadow: 3px 3px 0 var(--ink-700);
+  }
+
+  /* ─── Streak chip ─── */
+  .chip {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--paper-50);
+    border: 1px solid var(--ink-700);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    color: var(--color-fg);
+  }
+  .chip .dot { width: 6px; height: 6px; border-radius: 999px; background: var(--spot-700); }
+
+  /* ─── Progress bar ─── */
+  .progress {
+    height: 6px;
+    background: var(--paper-50);
+    border: 1px solid var(--ink-300);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .progress > i {
+    display: block;
+    height: 100%;
+    background: var(--ink-700);
+    border-radius: 999px;
+  }
+
+  /* ─── Spacing scale ─── */
+  .space-row { display: flex; align-items: center; gap: 14px; padding: 6px 0; }
+  .space-row .bar { background: var(--ink-700); height: 14px; }
+  .space-row .name { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.10em; min-width: 80px; }
+  .space-row .px { font-family: var(--font-editorial); font-style: italic; font-size: 14px; color: var(--color-fg-secondary); }
+
+  /* ─── Radii samples ─── */
+  .radii { display: flex; gap: 18px; flex-wrap: wrap; }
+  .radii > div { width: 92px; text-align: center; }
+  .radii .box { background: var(--ink-700); height: 84px; margin-bottom: 6px; }
+  .radii .lbl { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.10em; }
+  .radii .px { font-family: var(--font-editorial); font-style: italic; font-size: 12px; color: var(--color-fg-secondary); }
+
+  /* ─── Voice card ─── */
+  .voice {
+    background: var(--paper-50);
+    border: 1px solid var(--ink-300);
+    border-radius: 14px;
+    padding: 22px;
+  }
+  .voice + .voice { margin-top: 14px; }
+  .voice h3 {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    margin: 0 0 4px;
+  }
+  .voice .ex { font-family: var(--font-editorial); font-style: italic; font-size: 16px; color: var(--color-fg-secondary); margin: 0; }
+  .voice .meta { font-family: var(--font-mono); font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-fg-secondary); margin: 0 0 10px; }
+
+  /* ─── Inline screen ─── */
+  .phone {
+    width: 320px; height: 640px;
+    border-radius: 36px;
+    background: var(--paper-100);
+    border: 6px solid #111;
+    overflow: hidden;
     position: relative;
-    padding: 14px 12px; cursor: pointer; text-align: left;
-    background: var(--paper-50); color: var(--ink-700);
-    border: 2px solid var(--ink-700);
+    box-shadow: 0 18px 50px -20px rgba(0,0,0,0.45), 0 4px 14px -6px rgba(0,0,0,0.25);
+    margin: 0 auto;
   }
-  .pad.active { background: var(--ink-700); color: var(--paper-100); }
-  .pad .pn {
-    font-family: var(--font-display); font-weight: 700;
-    font-size: 26px; letter-spacing: -0.03em; line-height: 1;
-  }
-  .pad .ps {
-    font-family: var(--font-editorial); font-style: italic;
-    font-size: 12px; opacity: 0.7; margin-top: 4px;
-  }
-  .pad .tag {
-    position: absolute; top: -3px; right: -3px;
-    width: 8px; height: 8px; background: var(--spot-700);
-  }
+  .phone-inner { padding: 22px; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; }
 
-  /* badges */
-  .badge {
-    display: inline-block; padding: 3px 8px;
-    font-family: var(--font-mono); font-size: 10px; font-weight: 700;
-    letter-spacing: 0.18em; text-transform: uppercase;
-  }
-  .badge-spot { background: var(--spot-700); color: var(--paper-100); }
-  .badge-ink  { background: var(--ink-700); color: var(--paper-100); }
-  .badge-out  { background: transparent; color: var(--ink-700); border: 1px solid var(--ink-700); }
-  .badge-success { background: var(--green-500); color: var(--paper-100); }
-
-  /* progress segmented */
-  .seg { display: flex; gap: 3px; }
-  .seg > i { flex: 1; height: 4px; background: rgba(21, 32, 102, 0.18); display: block; }
-  .seg > i.on { background: var(--spot-700); }
-
-  /* progress bar with misreg */
-  .bar { height: 4px; background: var(--ink-700); position: relative; }
-  .bar > i { display: block; height: 100%; background: var(--spot-700); transform: translate(2px, 1px); }
-
-  /* type spec rows */
-  .spec {
-    display: grid; grid-template-columns: 200px 1fr; gap: 24px;
-    border-top: 1px solid var(--ink-700);
-    padding: 18px 0;
-    align-items: baseline;
-  }
-  .spec:first-of-type { border-top: 0; }
-  .spec .nm {
-    font-family: var(--font-mono); font-size: 10px; font-weight: 700;
-    letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-500);
-  }
-  .spec .nm small {
-    display: block; margin-top: 4px;
-    font-family: var(--font-editorial); font-style: italic; font-size: 12px;
-    text-transform: none; letter-spacing: 0; color: var(--ink-500); font-weight: 400;
-  }
-
-  /* spacing tokens */
-  .space-row { display: flex; align-items: center; gap: 12px; padding: 6px 0; }
-  .space-row .label {
-    font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
-    width: 64px; color: var(--ink-500);
-  }
-  .space-row .val {
-    font-family: var(--font-display); font-weight: 700; font-size: 14px;
-    width: 48px; color: var(--ink-700);
-  }
-  .space-row .bar2 { background: var(--spot-700); height: 14px; }
-
-  /* example phone preview */
-  .phone-box {
-    background: var(--paper-50); border: 1.5px solid var(--ink-700);
-    padding: 16px; box-shadow: var(--shadow-press);
-  }
-
-  /* footer */
-  .colophon {
-    margin-top: 96px; padding-top: 18px; border-top: 2px solid var(--ink-700);
-    display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 12px;
-  }
-  .colophon .l {
-    font-family: var(--font-editorial); font-style: italic; font-size: 14px;
-  }
-  .colophon .r {
-    font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--ink-500);
-  }
+  /* ─── Reduced fretboard SVG style ─── */
+  .fb-stage { padding: 16px 12px 10px; background: var(--color-fretboard-plate); border-radius: 12px; border: 1px solid var(--ink-300); }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <!-- MASTHEAD -->
-  <div class="masthead">
-    <div class="mh-l">Fretflow <span style="opacity:0.6;">— a design system, in print.</span></div>
-    <div class="mh-r">v2 · 03·V·26</div>
+<!-- ─────────────────────────────────────────────────── TITLE -->
+<header class="titleblock">
+  <div class="meta">
+    <span class="section-mono">Fretflow Design System</span>
+    <span class="section-mono">v4 · Editorial Warm</span>
   </div>
+  <h1>The instrument<br>is the screen.</h1>
+  <p class="lede">A warm editorial system in two riso inks — Fraunces sentence-case headings on warm newsprint, EB Garamond italic for the second voice, and a swappable Instrument component (fretboard, keyboard, etc) carrying the structural work.</p>
+</header>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="echo">RISO ×<br>SCORE.</div>
-    <div class="ink">RISO ×<br>SCORE.</div>
-    <div class="sub">A two-color riso print of an editorial sheet-music page. Ultramarine ink and spot orange on warm newsprint, where brutalist condensed type crashes against delicate Garamond italics — and sheet-music grammar carries the structure, <em>with feeling.</em></div>
+<!-- ─────────────────────────────────────────────────── COLORS -->
+<h2>The two presses + paper</h2>
+<p class="section-sub">Every Fretflow surface is "printed" with two ink plates. Anything beyond ink, spot, and paper is a mistake.</p>
+
+<div class="grid grid-3">
+  <div class="swatch">
+    <div class="chip" style="background: var(--ink-700);"></div>
+    <div class="info">
+      <div class="name">Ink</div>
+      <p class="role">Ultramarine. Text, lines, default fills, the fretboard.</p>
+      <span class="hex">--ink-700  ·  #152066</span>
+    </div>
   </div>
-
-  <!-- COLOR -->
-  <section>
-    <div class="sec-head">
-      <div>
-        <h2>The two presses.</h2>
-        <div class="sec-sub">Ultramarine ink + spot orange + paper. Plus one printer's green for "in tune". That's it.</div>
-      </div>
-      <div class="sec-meta">§01 · COLOR</div>
+  <div class="swatch">
+    <div class="chip" style="background: var(--spot-700);"></div>
+    <div class="info">
+      <div class="name">Spot</div>
+      <p class="role">Newsprint orange-red. Accent, misregistration echo, primary-CTA shadow.</p>
+      <span class="hex">--spot-700  ·  #FF5A2C</span>
     </div>
-
-    <p class="lead">Every Fretflow surface is "printed" with exactly two ink plates. <em>No gradients, no third hue.</em></p>
-
-    <div class="grid c4">
-      <!-- INK -->
-      <div class="swatch">
-        <div class="chip" style="background:var(--ink-900);"></div>
-        <div class="meta">
-          <div class="name" style="color:var(--ink-700);">Ink 900</div>
-          <div class="vals"><span>--ink-900</span><span>#0B1240</span></div>
-        </div>
-      </div>
-      <div class="swatch">
-        <div class="chip" style="background:var(--ink-700);"></div>
-        <div class="meta">
-          <div class="name">Ink 700 <small style="font-family:var(--font-editorial);font-style:italic;font-weight:400;font-size:12px;letter-spacing:0;">core</small></div>
-          <div class="vals"><span>--ink-700</span><span>#152066</span></div>
-        </div>
-      </div>
-      <div class="swatch">
-        <div class="chip" style="background:var(--ink-500);"></div>
-        <div class="meta">
-          <div class="name">Ink 500</div>
-          <div class="vals"><span>--ink-500</span><span>#2C3B86</span></div>
-        </div>
-      </div>
-      <div class="swatch">
-        <div class="chip" style="background:var(--ink-300);"></div>
-        <div class="meta">
-          <div class="name">Ink 300</div>
-          <div class="vals"><span>--ink-300</span><span>#6E7BB8</span></div>
-        </div>
-      </div>
-
-      <!-- SPOT -->
-      <div class="swatch">
-        <div class="chip" style="background:var(--spot-900);"></div>
-        <div class="meta">
-          <div class="name">Spot 900</div>
-          <div class="vals"><span>--spot-900</span><span>#C13A14</span></div>
-        </div>
-      </div>
-      <div class="swatch">
-        <div class="chip" style="background:var(--spot-700);"></div>
-        <div class="meta">
-          <div class="name">Spot 700 <small style="font-family:var(--font-editorial);font-style:italic;font-weight:400;font-size:12px;letter-spacing:0;">core</small></div>
-          <div class="vals"><span>--spot-700</span><span>#FF5A2C</span></div>
-        </div>
-      </div>
-      <div class="swatch">
-        <div class="chip" style="background:var(--spot-500);"></div>
-        <div class="meta">
-          <div class="name">Spot 500</div>
-          <div class="vals"><span>--spot-500</span><span>#FF7B52</span></div>
-        </div>
-      </div>
-      <div class="swatch">
-        <div class="chip" style="background:var(--spot-300);"></div>
-        <div class="meta">
-          <div class="name">Spot 300</div>
-          <div class="vals"><span>--spot-300</span><span>#FFB69E</span></div>
-        </div>
-      </div>
-
-      <!-- PAPER -->
-      <div class="swatch">
-        <div class="chip" style="background:var(--paper-50);"></div>
-        <div class="meta">
-          <div class="name">Paper 50</div>
-          <div class="vals"><span>--paper-50</span><span>#FBF7EA</span></div>
-        </div>
-      </div>
-      <div class="swatch">
-        <div class="chip" style="background:var(--paper-100);"></div>
-        <div class="meta">
-          <div class="name">Paper 100 <small style="font-family:var(--font-editorial);font-style:italic;font-weight:400;font-size:12px;letter-spacing:0;">page</small></div>
-          <div class="vals"><span>--paper-100</span><span>#F4EEDF</span></div>
-        </div>
-      </div>
-      <div class="swatch">
-        <div class="chip" style="background:var(--paper-200);"></div>
-        <div class="meta">
-          <div class="name">Paper 200</div>
-          <div class="vals"><span>--paper-200</span><span>#ECE3CC</span></div>
-        </div>
-      </div>
-      <div class="swatch">
-        <div class="chip" style="background:var(--paper-300);"></div>
-        <div class="meta">
-          <div class="name">Paper 300</div>
-          <div class="vals"><span>--paper-300</span><span>#DDD0AE</span></div>
-        </div>
-      </div>
-
-      <!-- STATUS -->
-      <div class="swatch">
-        <div class="chip" style="background:var(--green-500);"></div>
-        <div class="meta">
-          <div class="name">Green 500 <small style="font-family:var(--font-editorial);font-style:italic;font-weight:400;font-size:12px;letter-spacing:0;">in tune</small></div>
-          <div class="vals"><span>--green-500</span><span>#1F7A4D</span></div>
-        </div>
-      </div>
-      <div class="swatch">
-        <div class="chip" style="background:var(--green-100);"></div>
-        <div class="meta">
-          <div class="name">Green 100</div>
-          <div class="vals"><span>--green-100</span><span>#D7E8DC</span></div>
-        </div>
-      </div>
-      <div class="swatch" style="grid-column: span 2;">
-        <div class="chip" style="background:var(--paper-100); display:flex; align-items:center; justify-content:center; aspect-ratio:3.2;">
-          <div style="font-family:var(--font-editorial);font-style:italic;font-size:18px;color:var(--ink-500);">incorrect uses spot — same press.</div>
-        </div>
-        <div class="meta">
-          <div class="name">Error</div>
-          <div class="vals"><span>= --spot-700</span><span>#FF5A2C</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TYPE -->
-  <section>
-    <div class="sec-head">
-      <div>
-        <h2>Three voices.</h2>
-        <div class="sec-sub">Display, editorial, and mono. The contrast between them is the whole system.</div>
-      </div>
-      <div class="sec-meta">§02 · TYPE</div>
-    </div>
-
-    <div class="spec">
-      <div class="nm">DISPLAY · XL<small>Space Grotesk 700 / 92px / -0.06em</small></div>
-      <div class="fr-display-xl">NICE.</div>
-    </div>
-    <div class="spec">
-      <div class="nm">DISPLAY · LG<small>Space Grotesk 700 / 64px / -0.05em</small></div>
-      <div class="fr-display-lg">String five.</div>
-    </div>
-    <div class="spec">
-      <div class="nm">DISPLAY · MD<small>Space Grotesk 700 / 50px / -0.05em</small></div>
-      <div class="fr-display-md">Name this note.</div>
-    </div>
-    <div class="spec">
-      <div class="nm">DISPLAY · SM<small>Space Grotesk 700 / 36px / -0.04em</small></div>
-      <div class="fr-display-sm">Today's session.</div>
-    </div>
-    <div class="spec">
-      <div class="nm">EDITORIAL · LG<small>EB Garamond italic / 22px</small></div>
-      <div class="fr-editorial-lg">Five notes, five minutes — <em style="color:var(--spot-700);font-style:italic;">with feeling.</em></div>
-    </div>
-    <div class="spec">
-      <div class="nm">EDITORIAL<small>EB Garamond italic / 15px</small></div>
-      <div class="fr-editorial">measure iii of viii — andante, calmly.</div>
-    </div>
-    <div class="spec">
-      <div class="nm">BODY<small>Inter Tight 400 / 15px</small></div>
-      <div class="fr-body">Fretflow turns fretboard memorization into a five-minute daily ritual. Through short, gamified drills — note ID by sight, note ID by ear, interval recognition — players go from rote pattern-recall to fluent fretboard knowledge.</div>
-    </div>
-    <div class="spec">
-      <div class="nm">MONO · LABEL<small>JetBrains Mono 700 / 9px / 0.18em / UPPER</small></div>
-      <div class="fr-mono-label">DAY 14 · STREAK ACTIVE</div>
-    </div>
-    <div class="spec">
-      <div class="nm">MONO · DATA<small>JetBrains Mono 700 / 22px / tnum</small></div>
-      <div class="fr-mono-data">02:14</div>
-    </div>
-    <div class="spec">
-      <div class="nm">ROMAN<small>EB Garamond italic / oldstyle nums</small></div>
-      <div class="fr-roman">Op. xiv · No. 26</div>
-    </div>
-    <div class="spec">
-      <div class="nm">GLYPHS<small>Garamond — sharp, flat, natural, treble</small></div>
-      <div style="font-family:var(--font-editorial); font-size: 36px; color: var(--ink-700);">𝄞 &nbsp; ♯ &nbsp; ♭ &nbsp; ♮ &nbsp; ♩</div>
-    </div>
-  </section>
-
-  <!-- THE STAFF -->
-  <section>
-    <div class="sec-head">
-      <div>
-        <h2>Sheet-music grammar.</h2>
-        <div class="sec-sub">Staves, clefs, measure counts and tempo marks structure the product — they aren't decoration.</div>
-      </div>
-      <div class="sec-meta">§03 · GRAMMAR</div>
-    </div>
-
-    <div class="plate">
-      <div class="fr-mono-label" style="margin-bottom:8px;">A FIVE-LINE STAVE WITH MISREGISTERED ECHO</div>
-      <svg viewBox="0 0 700 80" width="100%" style="overflow:visible;">
-        <!-- orange echo -->
-        <line x1="0" y1="11.4" x2="700" y2="11.4" stroke="var(--spot-700)" stroke-width="0.7"/>
-        <line x1="0" y1="23.4" x2="700" y2="23.4" stroke="var(--spot-700)" stroke-width="0.7"/>
-        <line x1="0" y1="35.4" x2="700" y2="35.4" stroke="var(--spot-700)" stroke-width="0.7"/>
-        <line x1="0" y1="47.4" x2="700" y2="47.4" stroke="var(--spot-700)" stroke-width="0.7"/>
-        <line x1="0" y1="59.4" x2="700" y2="59.4" stroke="var(--spot-700)" stroke-width="0.7"/>
-        <!-- ink -->
-        <line x1="0" y1="10" x2="700" y2="10" stroke="var(--ink-700)" stroke-width="0.8"/>
-        <line x1="0" y1="22" x2="700" y2="22" stroke="var(--ink-700)" stroke-width="0.8"/>
-        <line x1="0" y1="34" x2="700" y2="34" stroke="var(--ink-700)" stroke-width="0.8"/>
-        <line x1="0" y1="46" x2="700" y2="46" stroke="var(--ink-700)" stroke-width="0.8"/>
-        <line x1="0" y1="58" x2="700" y2="58" stroke="var(--ink-700)" stroke-width="0.8"/>
-        <!-- clef + time sig -->
-        <text x="4" y="50" font-size="40" font-family="EB Garamond, serif" fill="var(--ink-700)">𝄞</text>
-        <text x="44" y="32" font-size="18" font-family="Space Grotesk, sans-serif" font-weight="700" fill="var(--ink-700)">5</text>
-        <text x="44" y="50" font-size="18" font-family="Space Grotesk, sans-serif" font-weight="700" fill="var(--ink-700)">4</text>
-        <!-- notes -->
-        <g>
-          <ellipse cx="120" cy="40" rx="7" ry="5" fill="var(--ink-700)" transform="rotate(-20 120 40)"/>
-          <line x1="126" y1="38" x2="126" y2="6" stroke="var(--ink-700)" stroke-width="1"/>
-          <text x="120" y="76" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="var(--ink-700)">A</text>
-        </g>
-        <g>
-          <ellipse cx="200" cy="34" rx="7" ry="5" fill="var(--ink-700)" transform="rotate(-20 200 34)"/>
-          <line x1="206" y1="32" x2="206" y2="0" stroke="var(--ink-700)" stroke-width="1"/>
-          <text x="200" y="76" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="var(--ink-700)">B</text>
-        </g>
-        <!-- accent note -->
-        <g>
-          <ellipse cx="282" cy="28" rx="7.5" ry="5.5" fill="var(--spot-700)" opacity="0.9" transform="rotate(-20 283 29)"/>
-          <ellipse cx="280" cy="28" rx="7" ry="5" fill="var(--ink-700)" transform="rotate(-20 280 28)"/>
-          <line x1="286" y1="26" x2="286" y2="-6" stroke="var(--ink-700)" stroke-width="1"/>
-          <text x="280" y="76" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="var(--spot-700)">C</text>
-        </g>
-        <g>
-          <ellipse cx="360" cy="22" rx="7" ry="5" fill="var(--ink-700)" transform="rotate(-20 360 22)"/>
-          <line x1="366" y1="20" x2="366" y2="-12" stroke="var(--ink-700)" stroke-width="1"/>
-          <text x="360" y="76" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="var(--ink-700)">D</text>
-        </g>
-        <g>
-          <ellipse cx="440" cy="16" rx="7" ry="5" fill="var(--ink-700)" transform="rotate(-20 440 16)"/>
-          <line x1="446" y1="14" x2="446" y2="-18" stroke="var(--ink-700)" stroke-width="1"/>
-          <text x="440" y="76" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="var(--ink-700)">E</text>
-        </g>
-        <!-- bar line -->
-        <line x1="698" y1="10" x2="698" y2="58" stroke="var(--ink-700)" stroke-width="2"/>
-      </svg>
-      <div class="fr-editorial" style="margin-top:14px;">♩ = 60 · <em style="color:var(--spot-700);">andante</em>, calmly.</div>
-    </div>
-  </section>
-
-  <!-- COMPONENTS -->
-  <section>
-    <div class="sec-head">
-      <div>
-        <h2>Components.</h2>
-        <div class="sec-sub">Buttons, pads, plates, badges, progress — all printed on the same press.</div>
-      </div>
-      <div class="sec-meta">§04 · COMPONENTS</div>
-    </div>
-
-    <!-- BUTTONS -->
-    <div class="grid c2" style="margin-bottom: 32px;">
-      <div class="plate-flat">
-        <div class="fr-mono-label" style="margin-bottom:14px;">PRIMARY · INK + SPOT BLOCK</div>
-        <button class="btn">BEGIN <span class="arr">→</span></button>
-        <div class="fr-editorial-sm" style="margin-top:14px;">Ink fill on paper, with a hard 4×4 spot block. Press to "settle" onto the page.</div>
-      </div>
-      <div class="plate-flat">
-        <div class="fr-mono-label" style="margin-bottom:14px;">ACCENT · SPOT</div>
-        <button class="btn btn-spot">GO <span class="arr">→</span></button>
-        <div class="fr-editorial-sm" style="margin-top:14px;">Reserved for celebratory or destructive primary actions.</div>
-      </div>
-      <div class="plate-flat">
-        <div class="fr-mono-label" style="margin-bottom:14px;">GHOST · GARAMOND</div>
-        <button class="btn btn-ghost">review</button>
-        <div class="fr-editorial-sm" style="margin-top:14px;">Italic Garamond inside a thin ink rule. Secondary actions and "soft" verbs.</div>
-      </div>
-      <div class="plate-flat">
-        <div class="fr-mono-label" style="margin-bottom:14px;">ANSWER PADS</div>
-        <div class="grid c3" style="gap:6px;">
-          <div class="pad"><div class="pn">G</div><div class="ps">sol</div></div>
-          <div class="pad active"><div class="pn">A</div><div class="ps" style="color:var(--paper-100);opacity:0.9;">la</div><div class="tag"></div></div>
-          <div class="pad"><div class="pn">B</div><div class="ps">si</div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- BADGES + PROGRESS -->
-    <div class="grid c2" style="margin-bottom: 32px;">
-      <div class="plate-flat">
-        <div class="fr-mono-label" style="margin-bottom:14px;">BADGES</div>
-        <div style="display:flex; gap:8px; flex-wrap:wrap;">
-          <span class="badge badge-ink">DAY 14</span>
-          <span class="badge badge-spot">03·V·26</span>
-          <span class="badge badge-out">SIDE A</span>
-          <span class="badge badge-success">IN TUNE</span>
-        </div>
-        <div class="fr-editorial-sm" style="margin-top:14px;">Mono uppercase, 0.18em tracked. Three roles: ink, spot, hairline.</div>
-      </div>
-      <div class="plate-flat">
-        <div class="fr-mono-label" style="margin-bottom:14px;">PROGRESS</div>
-        <div class="seg" style="margin-bottom:14px;">
-          <i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i>
-        </div>
-        <div class="bar"><i style="width:37%;"></i></div>
-        <div class="fr-editorial-sm" style="margin-top:14px;">Segmented for "n of m" sessions. Misregistered bar for time elapsed.</div>
-      </div>
-    </div>
-
-    <!-- PLATES -->
-    <div class="grid c2">
-      <div class="plate-flat">
-        <div class="fr-mono-label" style="margin-bottom:14px;">FLAT PLATE</div>
-        <div class="fr-display-sm">A quiet card.</div>
-        <div class="fr-editorial" style="margin-top:8px;">Default container. 1.5px ink rule, paper-50 fill, no shadow.</div>
-      </div>
-      <div class="plate">
-        <div class="fr-mono-label" style="margin-bottom:14px;">PRESS-PRINTED PLATE</div>
-        <div class="fr-display-sm">An emphasized card.</div>
-        <div class="fr-editorial" style="margin-top:8px;">Same plate, gains a 4×4 spot block-shadow. Use sparingly — the more there are, the less they shout.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SPACING / RADII / SHADOW -->
-  <section>
-    <div class="sec-head">
-      <div>
-        <h2>The grid.</h2>
-        <div class="sec-sub">A 4-pixel base. Square corners by default. One shadow only.</div>
-      </div>
-      <div class="sec-meta">§05 · SPACE</div>
-    </div>
-
-    <div class="grid c2">
-      <div class="plate-flat">
-        <div class="fr-mono-label" style="margin-bottom:14px;">SCALE</div>
-        <div class="space-row"><span class="label">--space-1</span><span class="val">4</span><span class="bar2" style="width:4px;"></span></div>
-        <div class="space-row"><span class="label">--space-2</span><span class="val">8</span><span class="bar2" style="width:8px;"></span></div>
-        <div class="space-row"><span class="label">--space-3</span><span class="val">12</span><span class="bar2" style="width:12px;"></span></div>
-        <div class="space-row"><span class="label">--space-4</span><span class="val">16</span><span class="bar2" style="width:16px;"></span></div>
-        <div class="space-row"><span class="label">--space-5</span><span class="val">20</span><span class="bar2" style="width:20px;"></span></div>
-        <div class="space-row"><span class="label">--space-6</span><span class="val">24</span><span class="bar2" style="width:24px;"></span></div>
-        <div class="space-row"><span class="label">--space-8</span><span class="val">32</span><span class="bar2" style="width:32px;"></span></div>
-        <div class="space-row"><span class="label">--space-12</span><span class="val">48</span><span class="bar2" style="width:48px;"></span></div>
-        <div class="space-row"><span class="label">--space-16</span><span class="val">64</span><span class="bar2" style="width:64px;"></span></div>
-      </div>
-      <div class="plate-flat">
-        <div class="fr-mono-label" style="margin-bottom:14px;">RADII</div>
-        <div style="display:flex; gap:14px; align-items:flex-end; flex-wrap:wrap;">
-          <div style="text-align:center;">
-            <div style="width:64px;height:64px;background:var(--ink-700);border-radius:0;"></div>
-            <div class="fr-mono-label" style="margin-top:8px;">0 · DEFAULT</div>
-          </div>
-          <div style="text-align:center;">
-            <div style="width:64px;height:64px;background:var(--ink-700);border-radius:2px;"></div>
-            <div class="fr-mono-label" style="margin-top:8px;">2 · TAPE</div>
-          </div>
-          <div style="text-align:center;">
-            <div style="width:64px;height:64px;background:var(--ink-700);border-radius:3px;"></div>
-            <div class="fr-mono-label" style="margin-top:8px;">3 · SOFT</div>
-          </div>
-          <div style="text-align:center;">
-            <div style="width:64px;height:64px;background:var(--ink-700);border-radius:999px;"></div>
-            <div class="fr-mono-label" style="margin-top:8px;">PILL · NOTES</div>
-          </div>
-        </div>
-        <div class="fr-editorial" style="margin-top:24px;">Riso prints square. Round only when the metaphor demands it (tape labels, note bubbles).</div>
-
-        <div class="fr-mono-label" style="margin:24px 0 14px;">SHADOW</div>
-        <div style="display:flex; gap:24px; align-items:center;">
-          <div style="width:64px;height:64px;background:var(--paper-50);border:1.5px solid var(--ink-700);box-shadow:4px 4px 0 var(--spot-700);"></div>
-          <div class="fr-editorial-sm">Hard 4×4 spot block. The system has exactly one shadow. No soft drops, ever.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- VOICE -->
-  <section>
-    <div class="sec-head">
-      <div>
-        <h2>How it talks.</h2>
-        <div class="sec-sub">Encouraging coach, not a chirpy mascot. Brief. Musical. Calm.</div>
-      </div>
-      <div class="sec-meta">§06 · VOICE</div>
-    </div>
-
-    <div class="grid c2">
-      <div class="plate-flat" style="border-color:var(--green-500);">
-        <div class="fr-mono-label" style="color:var(--green-500); margin-bottom:14px;">YES</div>
-        <div class="fr-editorial-lg" style="margin-bottom:14px;">"Nice — that's three perfect fourths in a row."</div>
-        <div class="fr-editorial-lg" style="margin-bottom:14px;">"Today: the notes on string 5. Five minutes."</div>
-        <div class="fr-editorial-lg" style="margin-bottom:14px;">"You missed B♭ twice. Want to drill it?"</div>
-        <div class="fr-editorial-lg">"Day 14. Don't break the chain."</div>
-      </div>
-      <div class="plate-flat" style="border-color:var(--spot-700);">
-        <div class="fr-mono-label" style="color:var(--spot-700); margin-bottom:14px;">NO</div>
-        <div class="fr-editorial-lg" style="margin-bottom:14px;">"🎉 AWESOME JOB!! YOU CRUSHED IT!!"</div>
-        <div class="fr-editorial-lg" style="margin-bottom:14px;">"Let's gooo guitar friend! 🎸✨"</div>
-        <div class="fr-editorial-lg" style="margin-bottom:14px;">"Hey there, music maestro!"</div>
-        <div class="fr-editorial-lg">"Whoops! That wasn't quite right 😅"</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- IN CONTEXT -->
-  <section>
-    <div class="sec-head">
-      <div>
-        <h2>In context.</h2>
-        <div class="sec-sub">All of the above, on a real surface. The rules collide here — that's where the system lives.</div>
-      </div>
-      <div class="sec-meta">§07 · APPLIED</div>
-    </div>
-
-    <p class="lead">See <a href="directions/hybrid.html" style="color:var(--spot-700); text-decoration:none; border-bottom: 1.5px solid var(--spot-700);">directions/hybrid.html</a> for the canonical Today / Practice / Review screens, drag-pan-zoom on a canvas.</p>
-
-    <!-- a small "applied" example inline -->
-    <div class="phone-box" style="max-width: 360px;">
-      <div style="display:flex; justify-content:space-between; align-items:flex-end; border-bottom:1px solid var(--ink-700); padding-bottom:6px;">
-        <div class="fr-editorial-sm">Fretflow <span style="opacity:0.6;">— a daily exercise.</span></div>
-        <span class="badge badge-spot" style="transform: translateY(2px);">03·V·26</span>
-      </div>
-      <div class="fr-editorial-sm" style="margin-top:10px;">Op. xiv · No. 26</div>
-
-      <div style="position:relative; line-height:0.86; margin-top:10px;">
-        <div style="font-family:var(--font-display); font-weight:700; font-size:48px; letter-spacing:-0.05em; color:var(--spot-700); position:absolute; top:3px; left:3px; opacity:0.92;">STRING<br>FIVE.</div>
-        <div style="font-family:var(--font-display); font-weight:700; font-size:48px; letter-spacing:-0.05em; color:var(--ink-700); position:relative;">STRING<br>FIVE.</div>
-      </div>
-
-      <div class="fr-editorial" style="margin-top:14px;">Five notes, five minutes — <em style="color:var(--spot-700);">with feeling.</em></div>
-
-      <div style="margin-top:18px; display:flex; align-items:flex-end; gap:0; border-top:1px solid var(--ink-700); padding-top:12px;">
-        <div style="flex:1;">
-          <div class="fr-mono-label">DAY</div>
-          <div style="font-family:var(--font-display); font-weight:700; font-size:36px; letter-spacing:-0.04em; line-height:1; margin-top:4px; color:var(--ink-700);">14<span style="color:var(--spot-700);">.</span></div>
-        </div>
-        <button class="btn">BEGIN <span class="arr">→</span></button>
-      </div>
-    </div>
-  </section>
-
-  <!-- COLOPHON -->
-  <div class="colophon">
-    <div class="l">— set in Space Grotesk, EB Garamond, Inter Tight & JetBrains Mono. Printed in two passes.</div>
-    <div class="r">FRETFLOW · DESIGN SYSTEM · v2</div>
   </div>
-
+  <div class="swatch">
+    <div class="chip" style="background: var(--paper-100); border-bottom: 1px solid var(--ink-300);"></div>
+    <div class="info">
+      <div class="name">Paper</div>
+      <p class="role">Warm newsprint. Never pure white — the page is a substrate, not a canvas.</p>
+      <span class="hex">--paper-100  ·  #F4EEDF</span>
+    </div>
+  </div>
 </div>
+
+<h2 style="margin-top:64px;">Tints &amp; supporting</h2>
+<p class="section-sub">Used sparingly. The fretboard plate is its own warm parchment; the printer's green only ever means "in tune".</p>
+
+<div class="grid grid-4">
+  <div class="swatch">
+    <div class="chip" style="background: var(--ink-300);"></div>
+    <div class="info"><div class="name">Ink 300</div><p class="role">Faded ink — inactive lines.</p><span class="hex">#6E7BB8</span></div>
+  </div>
+  <div class="swatch">
+    <div class="chip" style="background: var(--ink-500);"></div>
+    <div class="info"><div class="name">Ink 500</div><p class="role">Mid ink — italic captions.</p><span class="hex">#2C3B86</span></div>
+  </div>
+  <div class="swatch">
+    <div class="chip" style="background: var(--paper-50); border-bottom: 1px solid var(--ink-300);"></div>
+    <div class="info"><div class="name">Paper 50</div><p class="role">Lifted cards.</p><span class="hex">#FBF7EA</span></div>
+  </div>
+  <div class="swatch">
+    <div class="chip" style="background: var(--color-fretboard-plate); border-bottom: 1px solid var(--ink-300);"></div>
+    <div class="info"><div class="name">Fretboard plate</div><p class="role">Warm parchment behind any rendered instrument.</p><span class="hex">#EFE6CF</span></div>
+  </div>
+  <div class="swatch">
+    <div class="chip" style="background: var(--green-500);"></div>
+    <div class="info"><div class="name">In-tune green</div><p class="role">Reserved for "correct" / tuner. Never decorative.</p><span class="hex">#1F7A4D</span></div>
+  </div>
+  <div class="swatch">
+    <div class="chip" style="background: var(--spot-300);"></div>
+    <div class="info"><div class="name">Spot 300</div><p class="role">Misregistration echo, soft.</p><span class="hex">#FFB69E</span></div>
+  </div>
+  <div class="swatch">
+    <div class="chip" style="background: var(--ink-900);"></div>
+    <div class="info"><div class="name">Ink 900</div><p class="role">Pressed states.</p><span class="hex">#0B1240</span></div>
+  </div>
+  <div class="swatch">
+    <div class="chip" style="background: var(--paper-300); border-bottom: 1px solid var(--ink-300);"></div>
+    <div class="info"><div class="name">Paper 300</div><p class="role">Hairlines on paper.</p><span class="hex">#DDD0AE</span></div>
+  </div>
+</div>
+
+<hr class="rule">
+
+<!-- ─────────────────────────────────────────────────── TYPE -->
+<h2 style="margin-top:64px;">Three voices</h2>
+<p class="section-sub">Fraunces serif for headings, EB Garamond italic for the second voice, Inter Tight for body, JetBrains Mono for tiny meta. Space Grotesk condensed survives — but only on celebration moments.</p>
+
+<div class="demo-frame">
+  <div class="demo-label">Heading · Fraunces 500</div>
+
+  <div class="specimen">
+    <div class="label">FR-H-XL  ·  60px / 0.95 / -0.03em</div>
+    <div style="font-family:var(--font-heading); font-weight:500; font-size:60px; line-height:0.95; letter-spacing:-0.03em;">Today, the<br>A string.</div>
+    <div class="meta">For session-headline moments. Two-line wrap is intentional.</div>
+  </div>
+  <div class="specimen">
+    <div class="label">FR-H-LG  ·  38px / 1 / -0.02em</div>
+    <div style="font-family:var(--font-heading); font-weight:500; font-size:38px; line-height:1; letter-spacing:-0.02em;">Today, the A string.</div>
+    <div class="meta">Default screen heading.</div>
+  </div>
+  <div class="specimen">
+    <div class="label">FR-H-MD  ·  30px / 1.05 / -0.02em</div>
+    <div style="font-family:var(--font-heading); font-weight:500; font-size:30px; line-height:1.05; letter-spacing:-0.02em;">What note is this?</div>
+    <div class="meta">Practice prompt, modal title.</div>
+  </div>
+  <div class="specimen">
+    <div class="label">FR-H-SM  ·  22px / 1.15 / -0.02em</div>
+    <div style="font-family:var(--font-heading); font-weight:500; font-size:22px; line-height:1.15; letter-spacing:-0.02em;">Settings</div>
+    <div class="meta">Sub-section, list-row title.</div>
+  </div>
+</div>
+
+<div class="demo-frame" style="margin-top: 22px;">
+  <div class="demo-label">Editorial · EB Garamond italic</div>
+
+  <div class="specimen">
+    <div class="label">FR-EDITORIAL-LG  ·  18px italic</div>
+    <div style="font-family:var(--font-editorial); font-style:italic; font-size:18px; color:var(--color-fg-secondary);">Five notes between the nut and seventh fret.</div>
+    <div class="meta">Subhead-as-aside. Always italic, always softer than the heading above.</div>
+  </div>
+  <div class="specimen">
+    <div class="label">FR-EDITORIAL  ·  15px italic</div>
+    <div style="font-family:var(--font-editorial); font-style:italic; font-size:15px; color:var(--color-fg-secondary);">About five minutes.</div>
+    <div class="meta">Reassuring caption. The system's "soft yes".</div>
+  </div>
+  <div class="specimen">
+    <div class="label">FR-EDITORIAL-SM  ·  13px italic</div>
+    <div style="font-family:var(--font-editorial); font-style:italic; font-size:13px; color:var(--color-fg-secondary);">5th string · frets 0–7</div>
+    <div class="meta">Annotation under the instrument.</div>
+  </div>
+</div>
+
+<div class="demo-frame" style="margin-top: 22px;">
+  <div class="demo-label">Body · Inter Tight</div>
+
+  <div class="specimen">
+    <div class="label">FR-BODY-STRONG  ·  16px / 600</div>
+    <div style="font-family:var(--font-body); font-weight:600; font-size:16px;">Begin practice</div>
+    <div class="meta">Button labels, tab labels, decisive copy.</div>
+  </div>
+  <div class="specimen">
+    <div class="label">FR-BODY  ·  15px / 400</div>
+    <div style="font-family:var(--font-body); font-size:15px;">Use 15px for paragraph copy on settings rows, lists, and any extended reading. Generous line height keeps newsprint feel.</div>
+    <div class="meta">Default paragraph. 15px / 1.45 line height.</div>
+  </div>
+  <div class="specimen">
+    <div class="label">FR-BODY-SM  ·  13px / 400</div>
+    <div style="font-family:var(--font-body); font-size:13px; color:var(--color-fg-secondary);">Secondary descriptions and explanatory text.</div>
+    <div class="meta">Auxiliary copy, never primary.</div>
+  </div>
+</div>
+
+<div class="demo-frame" style="margin-top: 22px;">
+  <div class="demo-label">Mono · JetBrains Mono</div>
+
+  <div class="specimen">
+    <div class="label">FR-MONO-LABEL  ·  9px / 700 / 0.16em uppercase</div>
+    <div class="fr-mono-label">TODAY'S RANGE</div>
+    <div class="meta">Section markers, the smallest meta voice. Prefer this over a poster register for non-celebratory section heads.</div>
+  </div>
+  <div class="specimen">
+    <div class="label">FR-MONO  ·  11px / 700 / 0.10em</div>
+    <div class="fr-mono">2:14</div>
+    <div class="meta">Timer. Tabular numerals on.</div>
+  </div>
+</div>
+
+<div class="demo-frame" style="margin-top: 22px;">
+  <div class="demo-label">Poster (reserved) · Space Grotesk 700, ALL CAPS — celebration only</div>
+
+  <div class="specimen">
+    <div class="label">FR-POSTER-LG  ·  60px / 0.85 / -0.05em uppercase</div>
+    <div class="fr-poster-lg">DAY 14.</div>
+    <div class="meta">Streak milestone. Nothing else gets this register — if you're reaching for it on a normal screen, use FR-H-XL instead.</div>
+  </div>
+</div>
+
+<hr class="rule">
+
+<!-- ─────────────────────────────────────────────────── INSTRUMENT -->
+<h2 style="margin-top:64px;">The instrument is the screen.</h2>
+<p class="section-sub">v4's central commitment. The structural visual on most product screens is a real instrument — not a sheet-music stave. The component is swappable; everything else stays put.</p>
+
+<div class="grid grid-2" style="gap:32px;">
+  <div>
+    <div class="section-mono" style="margin-bottom:8px;">Guitar — primary</div>
+    <div class="fb-stage">
+      <svg viewBox="0 0 272 130" width="100%" style="display:block; overflow:visible;">
+        <!-- bg -->
+        <rect x="27" y="10" width="233" height="94" fill="#EFE6CF" stroke="#152066" stroke-width="1"/>
+        <!-- nut -->
+        <rect x="25" y="10" width="3" height="94" fill="#152066"/>
+        <!-- frets -->
+        <line x1="61" y1="10" x2="61" y2="104" stroke="#152066" stroke-width="0.8" opacity="0.85"/>
+        <line x1="95" y1="10" x2="95" y2="104" stroke="#152066" stroke-width="0.8" opacity="0.85"/>
+        <line x1="129" y1="10" x2="129" y2="104" stroke="#152066" stroke-width="0.8" opacity="0.85"/>
+        <line x1="163" y1="10" x2="163" y2="104" stroke="#152066" stroke-width="0.8" opacity="0.85"/>
+        <line x1="197" y1="10" x2="197" y2="104" stroke="#152066" stroke-width="0.8" opacity="0.85"/>
+        <line x1="231" y1="10" x2="231" y2="104" stroke="#152066" stroke-width="0.8" opacity="0.85"/>
+        <line x1="265" y1="10" x2="265" y2="104" stroke="#152066" stroke-width="0.8" opacity="0.85"/>
+        <!-- inlays -->
+        <circle cx="78" cy="57" r="2.6" fill="#152066" opacity="0.18"/>
+        <circle cx="112" cy="57" r="2.6" fill="#152066" opacity="0.18"/>
+        <circle cx="146" cy="57" r="2.6" fill="#152066" opacity="0.18"/>
+        <!-- strings -->
+        <line x1="22" y1="18" x2="262" y2="18" stroke="#152066" stroke-width="0.6"/>
+        <line x1="22" y1="31" x2="262" y2="31" stroke="#152066" stroke-width="0.6"/>
+        <line x1="22" y1="44" x2="262" y2="44" stroke="#152066" stroke-width="0.6"/>
+        <line x1="22" y1="57" x2="262" y2="57" stroke="#152066" stroke-width="1"/>
+        <line x1="22" y1="70" x2="262" y2="70" stroke="#152066" stroke-width="1"/>
+        <line x1="22" y1="83" x2="262" y2="83" stroke="#152066" stroke-width="1"/>
+        <!-- string labels -->
+        <text x="17" y="21" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#152066" opacity="0.65">e</text>
+        <text x="17" y="34" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#152066" opacity="0.65">B</text>
+        <text x="17" y="47" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#152066" opacity="0.65">G</text>
+        <text x="17" y="60" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#152066" opacity="0.65">D</text>
+        <text x="17" y="73" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#152066" opacity="0.65">A</text>
+        <text x="17" y="86" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#152066" opacity="0.65">E</text>
+        <!-- highlight: A string, fret 3 -->
+        <circle cx="80.5" cy="71.5" r="7.5" fill="#FF5A2C" opacity="0.75"/>
+        <circle cx="79" cy="70" r="7" fill="#152066" stroke="#F4EEDF" stroke-width="1.5"/>
+        <!-- fret numbers -->
+        <text x="44" y="118" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" font-weight="700" fill="#152066" opacity="0.55">1</text>
+        <text x="78" y="118" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" font-weight="700" fill="#152066" opacity="0.55">3</text>
+        <text x="112" y="118" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" font-weight="700" fill="#152066" opacity="0.55">5</text>
+        <text x="146" y="118" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" font-weight="700" fill="#152066" opacity="0.55">7</text>
+      </svg>
+    </div>
+    <div class="fr-editorial-sm" style="margin-top:8px; text-align:right;">5th string · fret 3 · A</div>
+  </div>
+
+  <div>
+    <div class="section-mono" style="margin-bottom:8px;">Piano — same system, swapped component</div>
+    <div class="fb-stage" style="padding-bottom: 14px;">
+      <svg viewBox="0 0 272 100" width="100%" style="display:block;">
+        <!-- white keys -->
+        <g>
+        <rect x="0" y="0" width="18.9" height="90" fill="#FBF7EA" stroke="#152066" stroke-width="0.9"/>
+        <rect x="19.4" y="0" width="18.9" height="90" fill="#FBF7EA" stroke="#152066" stroke-width="0.9"/>
+        <rect x="38.9" y="0" width="18.9" height="90" fill="#FBF7EA" stroke="#152066" stroke-width="0.9"/>
+        <rect x="58.4" y="0" width="18.9" height="90" fill="#FBF7EA" stroke="#152066" stroke-width="0.9"/>
+        <rect x="77.9" y="0" width="18.9" height="90" fill="#FBF7EA" stroke="#152066" stroke-width="0.9"/>
+        <rect x="97.4" y="0" width="18.9" height="90" fill="#FBF7EA" stroke="#152066" stroke-width="0.9"/>
+        <rect x="116.9" y="0" width="18.9" height="90" fill="#FBF7EA" stroke="#152066" stroke-width="0.9"/>
+        <!-- highlighted C -->
+        <rect x="137" y="1.5" width="18" height="87" fill="#FF5A2C" opacity="0.85"/>
+        <rect x="136.4" y="0" width="18.9" height="90" fill="none" stroke="#152066" stroke-width="0.9"/>
+        <rect x="155.9" y="0" width="18.9" height="90" fill="#FBF7EA" stroke="#152066" stroke-width="0.9"/>
+        <rect x="175.4" y="0" width="18.9" height="90" fill="#FBF7EA" stroke="#152066" stroke-width="0.9"/>
+        <rect x="194.9" y="0" width="18.9" height="90" fill="#FBF7EA" stroke="#152066" stroke-width="0.9"/>
+        <rect x="214.4" y="0" width="18.9" height="90" fill="#FBF7EA" stroke="#152066" stroke-width="0.9"/>
+        <rect x="233.9" y="0" width="18.9" height="90" fill="#FBF7EA" stroke="#152066" stroke-width="0.9"/>
+        <rect x="253.4" y="0" width="18.9" height="90" fill="#FBF7EA" stroke="#152066" stroke-width="0.9"/>
+        </g>
+        <!-- black keys -->
+        <g>
+        <rect x="13.7" y="0" width="11.4" height="56" fill="#152066"/>
+        <rect x="33.2" y="0" width="11.4" height="56" fill="#152066"/>
+        <rect x="72.2" y="0" width="11.4" height="56" fill="#152066"/>
+        <rect x="91.7" y="0" width="11.4" height="56" fill="#152066"/>
+        <rect x="111.2" y="0" width="11.4" height="56" fill="#152066"/>
+        <rect x="150.2" y="0" width="11.4" height="56" fill="#152066"/>
+        <rect x="169.7" y="0" width="11.4" height="56" fill="#152066"/>
+        <rect x="208.7" y="0" width="11.4" height="56" fill="#152066"/>
+        <rect x="228.2" y="0" width="11.4" height="56" fill="#152066"/>
+        <rect x="247.7" y="0" width="11.4" height="56" fill="#152066"/>
+        </g>
+      </svg>
+    </div>
+    <div class="fr-editorial-sm" style="margin-top:8px; text-align:right;">Middle octave · C4</div>
+  </div>
+</div>
+
+<div style="margin-top: 22px; padding: 18px 22px; background: var(--paper-50); border: 1px solid var(--ink-300); border-radius: 14px;">
+  <div class="section-mono" style="margin:0 0 6px;">Adding a new instrument</div>
+  <p class="fr-body" style="margin:0;">Build a new component (Bass, Ukulele, Mandolin, etc.) that knows how to render itself and where the highlighted note(s) go. The Today / Practice / Review chrome is unchanged. Same paper, same ink, same Fraunces, same orange echo on the highlighted note.</p>
+</div>
+
+<hr class="rule">
+
+<!-- ─────────────────────────────────────────────────── COMPONENTS -->
+<h2 style="margin-top:64px;">Buttons</h2>
+<p class="section-sub">Primary CTA carries a hard 4×4 orange block shadow. Press collapses to zero — the button "settles onto the page". Ghost is the only secondary.</p>
+
+<div class="demo-frame">
+  <div class="demo-label">Buttons</div>
+  <div class="grid grid-3" style="align-items: center;">
+    <button class="btn btn-primary"><span>Begin practice</span><span class="btn-arrow">→</span></button>
+    <button class="btn btn-ghost">Drill the miss</button>
+    <button class="btn btn-primary" style="opacity:0.4;">Disabled</button>
+  </div>
+</div>
+
+<h2 style="margin-top:64px;">Answer pads</h2>
+<p class="section-sub">The note grid. Selected pad inverts the relationship: orange fill, ink block shadow.</p>
+
+<div class="demo-frame">
+  <div class="demo-label">Answer pad — practice</div>
+  <div class="pad-row">
+    <div class="pad">G</div>
+    <div class="pad">A</div>
+    <div class="pad">B</div>
+    <div class="pad is-selected">C</div>
+    <div class="pad">D</div>
+    <div class="pad">E</div>
+  </div>
+</div>
+
+<h2 style="margin-top:64px;">Streak chip + progress</h2>
+<p class="section-sub">Two persistent affordances. The chip is a pill (the only daily-UI use of pill radius). The progress bar fills with ink on paper.</p>
+
+<div class="demo-frame">
+  <div class="demo-label">Chip · progress</div>
+  <div style="display:flex; align-items:center; gap:24px; flex-wrap:wrap;">
+    <span class="chip"><span class="dot"></span>day 14</span>
+    <div style="flex:1; min-width:240px;">
+      <div class="progress"><i style="width: 37%;"></i></div>
+      <div class="fr-mono-label" style="margin-top: 8px;">QUESTION 3 OF 8</div>
+    </div>
+  </div>
+</div>
+
+<h2 style="margin-top:64px;">Cards</h2>
+<p class="section-sub">Paper-50 fill on paper-100 ground. 14px radii. Block-shadow only on emphasized cards (instrument plate, primary CTA).</p>
+
+<div class="grid grid-2">
+  <div class="demo-frame">
+    <div class="demo-label">Default card</div>
+    <div class="fr-mono-label" style="margin-bottom: 8px;">TODAY'S RANGE</div>
+    <h3 class="fr-h-sm" style="margin: 0 0 4px;">Notes on the A string</h3>
+    <p class="fr-editorial" style="margin: 0;">Five notes between the nut and seventh fret.</p>
+  </div>
+  <div class="demo-frame" style="box-shadow: 4px 4px 0 var(--spot-700); border-color: var(--ink-700);">
+    <div class="demo-label">Press-printed card</div>
+    <div class="fr-mono-label" style="margin-bottom: 8px;">SESSION COMPLETE</div>
+    <h3 class="fr-h-sm" style="margin: 0 0 4px;">Seven of eight, on the A string.</h3>
+    <p class="fr-editorial" style="margin: 0;">Drill the one you missed?</p>
+  </div>
+</div>
+
+<hr class="rule">
+
+<!-- ─────────────────────────────────────────────────── SPACING & RADII -->
+<h2 style="margin-top:64px;">Spacing</h2>
+<p class="section-sub">4px base grid. 24px page gutter on mobile. Generous vertical rhythm — the system breathes.</p>
+
+<div class="demo-frame">
+  <div class="demo-label">Spacing scale</div>
+  <div>
+    <div class="space-row"><span class="name">--space-1</span><span class="bar" style="width:4px;"></span><span class="px">4 px</span></div>
+    <div class="space-row"><span class="name">--space-2</span><span class="bar" style="width:8px;"></span><span class="px">8 px</span></div>
+    <div class="space-row"><span class="name">--space-3</span><span class="bar" style="width:12px;"></span><span class="px">12 px</span></div>
+    <div class="space-row"><span class="name">--space-4</span><span class="bar" style="width:16px;"></span><span class="px">16 px</span></div>
+    <div class="space-row"><span class="name">--space-5</span><span class="bar" style="width:20px;"></span><span class="px">20 px</span></div>
+    <div class="space-row"><span class="name">--space-6</span><span class="bar" style="width:24px;"></span><span class="px">24 px · gutter</span></div>
+    <div class="space-row"><span class="name">--space-8</span><span class="bar" style="width:32px;"></span><span class="px">32 px</span></div>
+    <div class="space-row"><span class="name">--space-12</span><span class="bar" style="width:48px;"></span><span class="px">48 px</span></div>
+    <div class="space-row"><span class="name">--space-16</span><span class="bar" style="width:64px;"></span><span class="px">64 px</span></div>
+  </div>
+</div>
+
+<h2 style="margin-top:64px;">Radii</h2>
+<p class="section-sub">v4 walks back from v2's 0px brutalism. Hairlines and tape labels stay sharp; everything else softens to iOS-native warmth.</p>
+
+<div class="demo-frame">
+  <div class="demo-label">Corner radii</div>
+  <div class="radii">
+    <div><div class="box" style="border-radius:0;"></div><div class="lbl">none</div><div class="px">0 px</div></div>
+    <div><div class="box" style="border-radius:2px;"></div><div class="lbl">sm</div><div class="px">2 px</div></div>
+    <div><div class="box" style="border-radius:12px;"></div><div class="lbl">md</div><div class="px">12 px</div></div>
+    <div><div class="box" style="border-radius:14px;"></div><div class="lbl">lg</div><div class="px">14 px</div></div>
+    <div><div class="box" style="border-radius:36px;"></div><div class="lbl">xl</div><div class="px">36 px · phone</div></div>
+    <div><div class="box" style="border-radius:999px;"></div><div class="lbl">pill</div><div class="px">999 px</div></div>
+  </div>
+</div>
+
+<h2 style="margin-top:64px;">Shadows</h2>
+<p class="section-sub">Hard offset block in spot orange. Used sparingly — never more than two block-shadowed elements visible on one screen. No soft drop shadows in product UI.</p>
+
+<div class="demo-frame">
+  <div class="demo-label">Block shadow variants</div>
+  <div class="grid grid-3">
+    <div>
+      <div style="background: var(--paper-50); border: 1.5px solid var(--ink-700); border-radius: 14px; padding: 32px; box-shadow: 4px 4px 0 var(--spot-700); text-align: center; font-family: var(--font-heading); font-size: 18px;">primary CTA</div>
+      <div class="fr-mono-label" style="margin-top:10px;">4 × 4 px · spot</div>
+    </div>
+    <div>
+      <div style="background: var(--spot-700); color: var(--paper-100); border: 1.5px solid var(--ink-700); border-radius: 12px; padding: 32px; box-shadow: 3px 3px 0 var(--ink-700); text-align: center; font-family: var(--font-heading); font-size: 18px;">selected pad</div>
+      <div class="fr-mono-label" style="margin-top:10px;">3 × 3 px · ink (inverse)</div>
+    </div>
+    <div>
+      <div style="background: var(--ink-700); color: var(--paper-100); border: 0; border-radius: 14px; padding: 32px; box-shadow: 0 0 0 var(--spot-700); text-align: center; font-family: var(--font-heading); font-size: 18px;">pressed state</div>
+      <div class="fr-mono-label" style="margin-top:10px;">0 px · settled</div>
+    </div>
+  </div>
+</div>
+
+<hr class="rule">
+
+<!-- ─────────────────────────────────────────────────── VOICE -->
+<h2 style="margin-top:64px;">Voice</h2>
+<p class="section-sub">Patient teacher, second person, sentence case in daily UI. ALL CAPS reserved for celebration. The Garamond italic does the editorial softening — the copy itself stays direct.</p>
+
+<div class="grid grid-2">
+  <div>
+    <div class="voice">
+      <p class="meta">DAILY UI · SENTENCE CASE</p>
+      <h3>Today, the A string.</h3>
+      <p class="ex">Five notes between the nut and seventh fret.</p>
+    </div>
+    <div class="voice">
+      <p class="meta">PRACTICE · DIRECT</p>
+      <h3>What note is this?</h3>
+      <p class="ex">Tap the answer below.</p>
+    </div>
+    <div class="voice">
+      <p class="meta">COMPLETE · WARM, BRIEF</p>
+      <h3>Nice<span style="color:var(--spot-700);">.</span></h3>
+      <p class="ex">Seven of eight, on the A string.</p>
+    </div>
+  </div>
+  <div>
+    <div class="voice">
+      <p class="meta">CELEBRATION · POSTER REGISTER</p>
+      <h3 class="fr-poster-lg" style="font-size: 60px; margin: 0 0 4px;">DAY 14.</h3>
+      <p class="ex">Keep going.</p>
+    </div>
+    <div class="voice">
+      <p class="meta">EMPTY STATE · CALM</p>
+      <h3>No drills yet.</h3>
+      <p class="ex">Start with the notes on string 6.</p>
+    </div>
+    <div class="voice">
+      <p class="meta">ERROR · SPECIFIC, NOT SCOLDING</p>
+      <h3>Not quite — that was C.</h3>
+      <p class="ex">You'll get it next time.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="rule">
+
+<!-- ─────────────────────────────────────────────────── SCREEN -->
+<h2 style="margin-top:64px;">In context</h2>
+<p class="section-sub">All of the above, on a Today screen. Greeting in italic Garamond, sentence-case heading in Fraunces, instrument as the structural visual, primary CTA with block shadow, italic line below for reassurance.</p>
+
+<div style="display:flex; justify-content:center;">
+  <div class="phone">
+    <div class="phone-inner">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div style="font-family:var(--font-editorial); font-style:italic; font-size:18px; color:var(--ink-500);">Hi, Théo.</div>
+        <span class="chip"><span class="dot"></span>day 14</span>
+      </div>
+      <h2 style="font-family:var(--font-heading); font-weight:500; font-size:38px; line-height:1; letter-spacing:-0.02em; margin: 22px 0 8px;">Today, the<br>A string.</h2>
+      <div style="font-family:var(--font-editorial); font-style:italic; font-size:15px; color:var(--ink-500); line-height:1.4;">Five notes between the nut and seventh fret.</div>
+
+      <div style="margin-top:22px; padding: 18px 14px 12px; background: var(--paper-50); border-radius: 14px; border: 1px solid var(--ink-300);">
+        <div class="fr-mono-label" style="margin-bottom:8px;">TODAY'S RANGE</div>
+        <svg viewBox="0 0 234 116" width="100%" style="display:block; overflow:visible;">
+          <rect x="23" y="10" width="200" height="84" fill="#EFE6CF" stroke="#152066" stroke-width="1"/>
+          <rect x="21" y="10" width="3" height="84" fill="#152066"/>
+          <line x1="52" y1="10" x2="52" y2="94" stroke="#152066" stroke-width="0.8" opacity="0.85"/>
+          <line x1="81" y1="10" x2="81" y2="94" stroke="#152066" stroke-width="0.8" opacity="0.85"/>
+          <line x1="110" y1="10" x2="110" y2="94" stroke="#152066" stroke-width="0.8" opacity="0.85"/>
+          <line x1="139" y1="10" x2="139" y2="94" stroke="#152066" stroke-width="0.8" opacity="0.85"/>
+          <line x1="168" y1="10" x2="168" y2="94" stroke="#152066" stroke-width="0.8" opacity="0.85"/>
+          <line x1="197" y1="10" x2="197" y2="94" stroke="#152066" stroke-width="0.8" opacity="0.85"/>
+          <line x1="226" y1="10" x2="226" y2="94" stroke="#152066" stroke-width="0.8" opacity="0.85"/>
+          <circle cx="66" cy="52" r="2.4" fill="#152066" opacity="0.18"/>
+          <circle cx="95" cy="52" r="2.4" fill="#152066" opacity="0.18"/>
+          <circle cx="124" cy="52" r="2.4" fill="#152066" opacity="0.18"/>
+          <line x1="18" y1="18" x2="222" y2="18" stroke="#152066" stroke-width="0.6"/>
+          <line x1="18" y1="29" x2="222" y2="29" stroke="#152066" stroke-width="0.6"/>
+          <line x1="18" y1="40" x2="222" y2="40" stroke="#152066" stroke-width="0.6"/>
+          <line x1="18" y1="52" x2="222" y2="52" stroke="#152066" stroke-width="1"/>
+          <line x1="18" y1="64" x2="222" y2="64" stroke="#152066" stroke-width="1"/>
+          <line x1="18" y1="76" x2="222" y2="76" stroke="#152066" stroke-width="1"/>
+          <text x="13" y="21" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#152066" opacity="0.65">e</text>
+          <text x="13" y="32" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#152066" opacity="0.65">B</text>
+          <text x="13" y="43" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#152066" opacity="0.65">G</text>
+          <text x="13" y="55" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#152066" opacity="0.65">D</text>
+          <text x="13" y="67" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#152066" opacity="0.65">A</text>
+          <text x="13" y="79" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#152066" opacity="0.65">E</text>
+          <circle cx="68" cy="65.5" r="7.5" fill="#FF5A2C" opacity="0.75"/>
+          <circle cx="66.5" cy="64" r="7" fill="#152066" stroke="#F4EEDF" stroke-width="1.5"/>
+        </svg>
+        <div class="fr-editorial-sm" style="margin-top:6px; text-align:right;">5th string · frets 0–7</div>
+      </div>
+
+      <div style="flex:1;"></div>
+
+      <button class="btn btn-primary" style="width:100%; padding:18px 22px; justify-content:space-between; font-size:18px; gap:8px;">
+        <span style="white-space:nowrap;">Begin practice</span>
+        <span class="btn-arrow">→</span>
+      </button>
+      <div style="margin-top:10px; font-family:var(--font-editorial); font-style:italic; font-size:13px; color:var(--ink-500); text-align:center;">About five minutes.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────────────────────────────────────────────── COLOPHON -->
+<hr class="rule">
+<div style="margin-top: 64px; display:flex; justify-content:space-between; align-items:baseline;">
+  <span class="section-mono">Fretflow Design System  ·  v4 · Editorial Warm</span>
+  <span class="section-mono">colors_and_type.css  ·  README.md  ·  v4/index.html</span>
+</div>
+
 </body>
 </html>

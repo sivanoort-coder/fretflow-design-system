@@ -114,7 +114,9 @@
   --fs-14: 14px;
   --fs-15: 15px;
   --fs-16: 16px;
+  --fs-17: 17px;   /* iOS body minimum */
   --fs-18: 18px;
+  --fs-20: 20px;
   --fs-22: 22px;
   --fs-24: 24px;
   --fs-30: 30px;
@@ -254,7 +256,7 @@
   font-family: var(--font-editorial);
   font-style: italic;
   font-weight: 400;
-  font-size: var(--fs-18);
+  font-size: var(--fs-20);
   line-height: 1.35;
   color: var(--color-fg-secondary);
 }
@@ -262,7 +264,7 @@
   font-family: var(--font-editorial);
   font-style: italic;
   font-weight: 400;
-  font-size: var(--fs-15);
+  font-size: var(--fs-17);
   line-height: 1.35;
   color: var(--color-fg-secondary);
 }
@@ -270,7 +272,7 @@
   font-family: var(--font-editorial);
   font-style: italic;
   font-weight: 400;
-  font-size: var(--fs-13);
+  font-size: var(--fs-15);
   line-height: 1.35;
   color: var(--color-fg-secondary);
 }
@@ -279,21 +281,21 @@
 .fr-body {
   font-family: var(--font-body);
   font-weight: var(--fw-regular);
-  font-size: var(--fs-15);
+  font-size: var(--fs-17);
   line-height: var(--lh-normal);
   color: var(--color-fg);
 }
 .fr-body-sm {
   font-family: var(--font-body);
   font-weight: var(--fw-regular);
-  font-size: var(--fs-13);
+  font-size: var(--fs-15);
   line-height: var(--lh-normal);
   color: var(--color-fg-secondary);
 }
 .fr-body-strong {
   font-family: var(--font-body);
   font-weight: var(--fw-semibold);
-  font-size: var(--fs-16);
+  font-size: var(--fs-17);
   line-height: var(--lh-normal);
   color: var(--color-fg);
 }
@@ -302,7 +304,7 @@
 .fr-mono-label {
   font-family: var(--font-mono);
   font-weight: 700;
-  font-size: var(--fs-9);
+  font-size: var(--fs-11);
   line-height: 1;
   letter-spacing: var(--tracking-mono-sm);
   text-transform: uppercase;
@@ -311,7 +313,7 @@
 .fr-mono {
   font-family: var(--font-mono);
   font-weight: var(--fw-bold);
-  font-size: var(--fs-11);
+  font-size: var(--fs-13);
   line-height: 1.2;
   letter-spacing: var(--tracking-mono);
   font-feature-settings: "tnum" 1;
@@ -320,7 +322,7 @@
 .fr-mono-data {
   font-family: var(--font-mono);
   font-weight: var(--fw-bold);
-  font-size: var(--fs-13);
+  font-size: var(--fs-15);
   line-height: 1;
   letter-spacing: 0.05em;
   font-feature-settings: "tnum" 1;
